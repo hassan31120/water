@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AddressesController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -43,5 +44,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::post('/address/update/{id}', [AddressesController::class, 'update'])->name('admin.address.update');
     Route::get('/address/destroy/{id}', [AddressesController::class, 'destroy'])->name('admin.address.destroy');
 
+    // News
+    Route::get('/news', [NewsController::class, 'index'])->name('admin.news');
+    Route::get('/news/create', [NewsController::class, 'create'])->name('admin.news.create');
+    Route::post('/news/store', [NewsController::class, 'store'])->name('admin.news.store');
+    Route::get('/news/edit/{id}', [NewsController::class, 'edit'])->name('admin.news.edit');
+    Route::post('/news/update/{id}', [NewsController::class, 'update'])->name('admin.news.update');
+    Route::get('/news/destroy/{id}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
 
 });

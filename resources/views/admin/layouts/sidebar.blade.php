@@ -9,7 +9,7 @@
                 target="_blank">
 
                 <img src="{{ asset('admin/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="me-1 font-weight-bold text-white">Material Dashboard 2</span>
+                <span class="me-1 font-weight-bold text-white">Material Dashboard 23</span>
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
@@ -52,10 +52,10 @@
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
-                        <span class="nav-link-text me-1">RTL</span>
+                        <span class="nav-link-text me-1">RTLL</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link " href="../pages/notifications.html">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">notifications</i>
@@ -86,7 +86,7 @@
                         </div>
                         <span class="nav-link-text me-1">اشتراك</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">

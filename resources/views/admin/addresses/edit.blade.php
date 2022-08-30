@@ -70,7 +70,7 @@
 
                                                         <div class="mt-4 pt-2 text-center">
                                                             <input class="btn btn-primary btn-lg" type="submit"
-                                                                value="إضافة" />
+                                                                value="تعديل" />
                                                         </div>
 
                                                     </form>
