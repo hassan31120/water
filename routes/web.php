@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AddressesController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::get('/user/edit/{id}', [UsersController::class, 'edit'])->name('admin.user.edit');
     Route::post('/user/update/{id}', [UsersController::class, 'update'])->name('admin.user.update');
     Route::get('/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.user.destroy');
+
+    // Addresses
+    Route::get('/addresses', [AddressesController::class, 'index'])->name('admin.addresses');
+    Route::get('/address/create', [AddressesController::class, 'create'])->name('admin.address.create');
+    Route::post('/address/store', [AddressesController::class, 'store'])->name('admin.address.store');
+    Route::get('/address/edit/{id}', [AddressesController::class, 'edit'])->name('admin.address.edit');
+    Route::post('/address/update/{id}', [AddressesController::class, 'update'])->name('admin.address.update');
+    Route::get('/address/destroy/{id}', [AddressesController::class, 'destroy'])->name('admin.address.destroy');
 
 
 });
