@@ -9,13 +9,13 @@
                 target="_blank">
 
                 <img src="{{ asset('admin/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="me-1 font-weight-bold text-white">Material Dashboard 23</span>
+                <span class="me-1 font-weight-bold text-white">Material Dashboard 2</span>
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
         <div class="collapse navbar-collapse px-0 w-auto  max-height-vh-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link " href="../pages/dashboard.html">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">dashboard</i>
@@ -46,13 +46,29 @@
                         </div>
                         <span class="nav-link-text me-1">الواقع الافتراضي</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link active" href="../pages/rtl.html">
+                    <a class="nav-link {{ Request::path() ==  'admin/users' ? 'active' : ''  }}" href="{{ route('admin.users') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
-                        <span class="nav-link-text me-1">RTLL</span>
+                        <span class="nav-link-text me-1">الأعضاء</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::path() ==  'admin/addresses' ? 'active' : ''  }}" href="{{ route('admin.addresses') }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">العناوين</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::path() ==  'admin/news' ? 'active' : ''  }}" href="{{ route('admin.news') }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">الأخبار</span>
                     </a>
                 </li>
                 {{-- <li class="nav-item">

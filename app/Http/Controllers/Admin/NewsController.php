@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -15,6 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
+        Carbon::setLocale('ar');
         $news = News::all();
         return view('admin.news.index', compact('news'));
     }
