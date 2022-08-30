@@ -24,6 +24,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function(){
-    Route::get('/users', [UsersController::class,'index'])->name('index');
+Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
+
+    // Users
+    Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+    Route::get('/user/create', [UsersController::class, 'create'])->name('admin.user.create');
+    Route::post('/user/store', [UsersController::class, 'store'])->name('admin.user.store');
+    Route::get('/user/edit/{id}', [UsersController::class, 'edit'])->name('admin.user.edit');
+    Route::post('/user/update/{id}', [UsersController::class, 'update'])->name('admin.user.update');
+    Route::get('/user/destroy/{id}', [UsersController::class, 'destroy'])->name('admin.user.destroy');
+
+
 });

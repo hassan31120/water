@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -28,7 +29,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.add');
     }
 
     /**
@@ -39,7 +40,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'number' => ['required', 'numeric'],
+        ]);
+
+        $request['password'] = Hash::make($request['password']);
+
+        $data = $request->all();
+
+        User::create($data);
+
+        return redirect(route('admin.users'))->with('success', 'تم اضافة العضو بنجاح');
+
+
     }
 
     /**
@@ -61,7 +78,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -73,7 +91,23 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'number' => ['required', 'numeric'],
+        ]);
+
+        $request['password'] = Hash::make($request['password']);
+
+        $data = $request->all();
+
+        $user->update($data);
+
+        return redirect()->back()->with('success', 'تم تعديل العضو بنجاح');
+
     }
 
     /**
@@ -84,6 +118,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect(route('admin.users'))->with('success', 'تم حذف العضو بنجاح');
     }
 }

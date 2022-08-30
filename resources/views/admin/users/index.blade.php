@@ -5,8 +5,9 @@
         <div class="col-12">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h5 class="text-white text-capitalize ps-3">جدول المستخدمين</h5>
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
+                        <div class="col-6"><h5 class="text-white text-capitalize ps-3" style="margin-right: 10px; font-weight: 700;">جدول المستخدمين</h5></div>
+                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.user.create') }}" style="position: absolute; left: 2%" class="btn btn-primary">إضافة عضو جديد</a></div>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -37,9 +38,16 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        @isset($user->number)
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $user->number }}</p>
+                                            </td>
+                                        @else
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $user->number }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">لا يوجد رقم</p>
                                         </td>
+                                        @endisset
+
 
                                         <td class="align-middle text-center">
 
@@ -47,14 +55,14 @@
                                                 class="text-secondary text-xs font-weight-bold">{{ $user->created_at->diffForHumans() }}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="#" class="text-secondary font-weight-bold text-xs"
+                                            <a href="{{ route('admin.user.edit', $user->id) }}" class="text-secondary font-weight-bold text-xs"
                                                 data-toggle="tooltip" data-original-title="Edit user">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="#" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="tooltip" data-original-title="Delete user">
+                                            <a href="{{ route('admin.user.destroy', $user->id) }}" class="text-secondary font-weight-bold text-xs"
+                                                data-toggle="tooltip" data-original-title="Delete user" onclick="return confirm('هل انت متأكد من حذف العضو؟')">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>

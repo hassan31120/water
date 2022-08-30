@@ -8,6 +8,8 @@
 
     <div class="container-fluid py-4">
 
+        @include('admin.layouts.alerts')
+
         @yield('content')
 
         @include('admin.layouts.smallFooter')
