@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AddressesController;
+use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -51,5 +52,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::get('/news/edit/{id}', [NewsController::class, 'edit'])->name('admin.news.edit');
     Route::post('/news/update/{id}', [NewsController::class, 'update'])->name('admin.news.update');
     Route::get('/news/destroy/{id}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
+
+
+    // Banners
+    Route::get('/banners', [BannersController::class, 'index'])->name('admin.banners');
+    Route::get('/banner/create', [BannersController::class, 'create'])->name('admin.banner.create');
+    Route::post('/banner/store', [BannersController::class, 'store'])->name('admin.banner.store');
+    Route::get('/banner/edit/{id}', [BannersController::class, 'edit'])->name('admin.banner.edit');
+    Route::post('/banner/update/{id}', [BannersController::class, 'update'])->name('admin.banner.update');
+    Route::get('/banner/destroy/{id}', [BannersController::class, 'destroy'])->name('admin.banner.destroy');
 
 });

@@ -7,10 +7,10 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
                         <div class="col-6">
-                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">تعديل الخبر</h5>
+                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">إضافة صورة جديدة</h5>
                         </div>
-                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.news') }}" style="position: absolute; left: 2%"
-                                class="btn btn-primary">عرض الأخبار</a></div>
+                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.banners') }}"
+                                style="position: absolute; left: 2%" class="btn btn-primary">عرض الصور</a></div>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -24,17 +24,30 @@
                                             <div class="card shadow-2-strong card-registration"
                                                 style="border-radius: 15px;">
                                                 <div class="card-body p-4 p-md-5">
-                                                    <form action="{{ route('admin.news.update', $news->id) }}" method="POST">
+                                                    <form action="{{ route('admin.banner.store') }}" method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
 
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
                                                                 <div class="form-outline">
                                                                     <label class="form-label" for="title"
-                                                                        style="font-size: 18px">الخبر</label>
+                                                                        style="font-size: 18px">العنوان</label>
                                                                     <input type="text" name="title" id="title"
+                                                                        class="form-control form-control-lg formborderCSS" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12 mb-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label" for="title"
+                                                                        style="font-size: 18px">الصورة</label>
+                                                                    <input type="file" name="image" id="title"
                                                                         class="form-control form-control-lg formborderCSS"
-                                                                        required value="{{ $news->title }}" />
+                                                                        required />
                                                                 </div>
 
                                                             </div>
@@ -42,7 +55,7 @@
 
                                                         <div class="mt-4 pt-2 text-center">
                                                             <input class="btn btn-primary btn-lg" type="submit"
-                                                                value="تعديل" />
+                                                                value="إضافة" />
                                                         </div>
 
                                                     </form>

@@ -7,7 +7,7 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
                         <div class="col-6">
-                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">إضافة عنوان جديد</h5>
+                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">تعديل العنوان</h5>
                         </div>
                         <div class="col-6" style="position: relative;"><a href="{{ route('admin.addresses') }}" style="position: absolute; left: 2%"
                                 class="btn btn-primary">عرض العناوين</a></div>
