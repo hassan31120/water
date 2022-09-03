@@ -16,6 +16,7 @@
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
+                        @if (count($banners) > 0)
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
@@ -44,15 +45,15 @@
 
                                         @isset($banner->title)
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $banner->title }}</p>
+                                            <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">{{ $banner->title }}</p>
                                         </td>
                                         @else
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">لا يوجد عنوان</p>
+                                            <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">لا يوجد عنوان</p>
                                         </td>
                                         @endisset
                                         <td>
-                                            <img class="img-thumbnail" style="height: 100px; width: 80px ;" src="{{ asset($banner->image) }}" alt="banner">
+                                            <img class="img-thumbnail" style="height: 80px; width: 80px ;" src="{{ asset($banner->image) }}" alt="banner">
                                         </td>
 
                                         <td class="align-middle text-center">
@@ -80,6 +81,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @else
+                            <div class="alert alert-danger text-center" role="alert">
+                                <h2>لا يوجد صور</h2>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AddressesController;
 use App\Http\Controllers\Admin\BannersController;
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -61,5 +62,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::get('/banner/edit/{id}', [BannersController::class, 'edit'])->name('admin.banner.edit');
     Route::post('/banner/update/{id}', [BannersController::class, 'update'])->name('admin.banner.update');
     Route::get('/banner/destroy/{id}', [BannersController::class, 'destroy'])->name('admin.banner.destroy');
+
+    // Categories
+    Route::get('/categories', [CategoriesController::class, 'index'])->name('admin.categories');
+    Route::get('/category/create', [CategoriesController::class, 'create'])->name('admin.category.create');
+    Route::post('/category/store', [CategoriesController::class, 'store'])->name('admin.category.store');
+    Route::get('/category/edit/{id}', [CategoriesController::class, 'edit'])->name('admin.category.edit');
+    Route::post('/category/update/{id}', [CategoriesController::class, 'update'])->name('admin.category.update');
+    Route::get('/category/destroy/{id}', [CategoriesController::class, 'destroy'])->name('admin.category.destroy');
 
 });

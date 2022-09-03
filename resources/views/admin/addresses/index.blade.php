@@ -16,6 +16,7 @@
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
+                        @if (count($addresses) > 0)
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
@@ -40,11 +41,7 @@
                                 @foreach ($addresses as $address)
                                     <tr>
                                         <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $address->title }}</h6>
-                                                </div>
-                                            </div>
+                                            <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">{{ $address->title }}</p>
                                         </td>
 
                                         <td>
@@ -76,6 +73,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @else
+                            <div class="alert alert-danger text-center" role="alert">
+                                <h2>لا يوجد عنواين</h2>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -7,10 +7,10 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
                         <div class="col-6">
-                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">تعديل الصورة</h5>
+                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">تعديل الشركة</h5>
                         </div>
-                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.banners') }}"
-                                style="position: absolute; left: 2%" class="btn btn-primary">عرض الصور</a></div>
+                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.categories') }}"
+                                style="position: absolute; left: 2%" class="btn btn-primary">عرض الشركات</a></div>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -24,7 +24,7 @@
                                             <div class="card shadow-2-strong card-registration"
                                                 style="border-radius: 15px;">
                                                 <div class="card-body p-4 p-md-5">
-                                                    <form action="{{ route('admin.banner.update', $banner->id) }}"
+                                                    <form action="{{ route('admin.category.update', $category->id) }}"
                                                         method="POST" enctype="multipart/form-data">
                                                         @csrf
 
@@ -34,7 +34,7 @@
                                                                     <label class="form-label" for="title"
                                                                         style="font-size: 18px">العنوان</label>
                                                                     <input type="text" name="title" id="title"
-                                                                        class="form-control form-control-lg formborderCSS" value="{{ $banner->title }}" />
+                                                                        class="form-control form-control-lg formborderCSS" value="{{ $category->title }}" />
                                                                 </div>
 
                                                             </div>
@@ -49,7 +49,7 @@
                                                                         <div class="row">
                                                                             <div class="col-6"><input type="file" name="image" id="title"
                                                                                 class="form-control form-control-lg formborderCSS" /></div>
-                                                                            <div class="col-6"> <img src="{{ asset($banner->image) }}" alt="banner"> </div>
+                                                                            <div class="col-6"> <img src="{{ asset($category->image) }}" alt="banner"> </div>
                                                                         </div>
 
                                                                 </div>
