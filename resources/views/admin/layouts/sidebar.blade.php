@@ -55,6 +55,14 @@
                         <span class="nav-link-text me-1">الشركات</span>
                     </a>
                 </li>
+                {{-- <li class="nav-item">
+                    <a class="nav-link {{ Request::path() ==  'admin/subs' ? 'active' : ''  }}" href="{{ route('admin.subs') }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">الأقسام</span>
+                    </a>
+                </li> --}}
             </ul>
         </div>
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">

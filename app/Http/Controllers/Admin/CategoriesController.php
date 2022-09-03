@@ -68,7 +68,10 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        Carbon::setLocale('ar');
+        $category = Category::find($id);
+        return view('admin.categories.show', compact('category'));
+
     }
 
     /**

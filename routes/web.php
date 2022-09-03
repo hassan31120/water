@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AddressesController;
 use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -67,8 +68,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::get('/categories', [CategoriesController::class, 'index'])->name('admin.categories');
     Route::get('/category/create', [CategoriesController::class, 'create'])->name('admin.category.create');
     Route::post('/category/store', [CategoriesController::class, 'store'])->name('admin.category.store');
+    Route::get('category/{id}', [CategoriesController::class, 'show'])->name('admin.category');
     Route::get('/category/edit/{id}', [CategoriesController::class, 'edit'])->name('admin.category.edit');
     Route::post('/category/update/{id}', [CategoriesController::class, 'update'])->name('admin.category.update');
     Route::get('/category/destroy/{id}', [CategoriesController::class, 'destroy'])->name('admin.category.destroy');
+
+    // subCategories
+    Route::get('/subs', [SubCategoriesController::class, 'index'])->name('admin.subs');
+    Route::get('/sub/create', [SubCategoriesController::class, 'create'])->name('admin.sub.create');
+    Route::post('/sub/store', [SubCategoriesController::class, 'store'])->name('admin.sub.store');
+    Route::get('/sub/edit/{id}', [SubCategoriesController::class, 'edit'])->name('admin.sub.edit');
+    Route::post('/sub/update/{id}', [SubCategoriesController::class, 'update'])->name('admin.sub.update');
+    Route::get('/sub/destroy/{id}', [SubCategoriesController::class, 'destroy'])->name('admin.sub.destroy');
 
 });

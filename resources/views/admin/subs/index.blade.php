@@ -8,26 +8,22 @@
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
                         <div class="col-6">
                             <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px; font-weight: 700;">جدول
-                                الشركات</h5>
+                                الأقسام</h5>
                         </div>
-                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.category.create') }}"
-                                style="position: absolute; left: 2%" class="btn btn-primary">إضافة شركة جديدة</a></div>
+                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.sub.create') }}"
+                                style="position: absolute; left: 2%" class="btn btn-primary">إضافة قسم جديد</a></div>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
 
-                        @if (count($categories) > 0)
+                        @if (count($subs) > 0)
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
                                         {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th> --}}
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
-                                            العنوان</th>
-
-                                        <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
-                                            الصورة</th>
-
+                                            الإسم</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             منذ</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
@@ -38,35 +34,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
+                                    @foreach ($subs as $sub)
                                         <tr>
                                             <td>
-                                                <a href="{{ route('admin.category', $category->id) }}"><p class="text-xs font-weight-bold mb-0" style="margin-right:20px">{{ $category->title }}</p></a>
-                                            </td>
-
-                                            <td>
-                                                <img class="img-thumbnail" style="height: 80px; width: 80px ;"
-                                                    src="{{ asset($category->image) }}" alt="banner">
+                                                <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">{{ $sub->title }}</p>
                                             </td>
 
                                             <td class="align-middle text-center">
 
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $category->created_at->diffForHumans() }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $sub->created_at->diffForHumans() }}</span>
                                             </td>
 
                                             <td class="align-middle text-center">
-                                                <a href="{{ route('admin.category.edit', $category->id) }}"
+                                                <a href="{{ route('admin.sub.edit', $sub->id) }}"
                                                     class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                     data-original-title="Edit user">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="{{ route('admin.category.destroy', $category->id) }}"
+                                                <a href="{{ route('admin.sub.destroy', $sub->id) }}"
                                                     class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                     data-original-title="Delete user"
-                                                    onclick="return confirm('هل انت متأكد من حذف الشركة؟')">
+                                                    onclick="return confirm('هل انت متأكد من حذف القسم؟')">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>
@@ -76,7 +67,7 @@
                             </table>
                         @else
                             <div class="alert alert-danger text-center" role="alert">
-                                <h2>لا يوجد شركات</h2>
+                                <h2>لا يوجد أقسام</h2>
                             </div>
                         @endif
                     </div>

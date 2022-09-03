@@ -39,10 +39,6 @@
                             <tbody>
                                 @foreach ($banners as $banner)
                                     <tr>
-
-
-
-
                                         @isset($banner->title)
                                         <td>
                                             <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">{{ $banner->title }}</p>
