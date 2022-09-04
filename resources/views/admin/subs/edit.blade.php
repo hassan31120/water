@@ -36,7 +36,22 @@
                                                                     <input type="text" name="title" id="title"
                                                                         class="form-control form-control-lg formborderCSS" value="{{ $sub->title }}" />
                                                                 </div>
+                                                            </div>
+                                                        </div>
 
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <label class="form-label" for="cat_id"
+                                                                        style="font-size: 18px">اختيار شركة</label>
+                                                                    <select name="cat_id" id="cat_id" class="form-control form-control-lg formborderCSS"
+                                                                        class="form-control" required>
+                                                                        @foreach ($categories as $category)
+                                                                            <option value="{{ $category->id }}" {{isset($sub) ? $sub->cat_id == $category->id ? 'selected' : '' : old('cat_id')}}>
+                                                                                {{ $category->title }} </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
 

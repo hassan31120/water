@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
@@ -70,7 +72,22 @@ class CategoriesController extends Controller
     {
         Carbon::setLocale('ar');
         $category = Category::find($id);
-        return view('admin.categories.show', compact('category'));
+        $subs = SubCategory::where('cat_id', $id)->first();
+        return view('admin.categories.show', compact('category', 'subs'));
+
+    }
+
+    public function showCat($id)
+    {
+        Carbon::setLocale('ar');
+        $sub = SubCategory::find($id);
+        if ($sub) {
+            $category = Category::where('id', $sub->cat_id)->first();
+            return view('admin.categories.showCat', compact('sub', 'category'));
+        }else{
+            return view('admin.categories.showCat', compact('sub'));
+        }
+
 
     }
 

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class SubCategoriesController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class SubCategoriesController extends Controller
     public function index()
     {
         Carbon::setLocale('ar');
-        $subs = SubCategory::all();
-        return view('admin.subs.index', compact('subs'));
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -29,8 +29,8 @@ class SubCategoriesController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.subs.add', compact('categories'));
+        $subs = SubCategory::all();
+        return view('admin.products.add', compact('subs'));
     }
 
     /**
@@ -42,14 +42,28 @@ class SubCategoriesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required'
+            'title' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'image' => 'required',
+            'old_price' => 'required',
+            'new_price' => 'required',
+            'sub_id' => 'required',
         ]);
 
         $data = $request->all();
 
-        SubCategory::create($data);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filepath = 'admin/images/products/' . date('Y') . '/' . date('m') . '/';
+            $filename = $filepath . time() . '-' . $file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            $data['image'] = $filename;
+        }
 
-        return redirect(route('admin.subs'))->with('success', 'تم اضافة القسم بنجاح');
+        Product::create($data);
+
+        return redirect(route('admin.products'))->with('success', 'تم إضافة المنتج بنجاح');
     }
 
     /**
@@ -71,9 +85,8 @@ class SubCategoriesController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::all();
-        $sub = SubCategory::find($id);
-        return view('admin.subs.edit', compact('sub', 'categories'));
+        $product = Product::find($id);
+        return view('admin.products.index', compact('product'));
     }
 
     /**
@@ -85,17 +98,7 @@ class SubCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sub = SubCategory::find($id);
-
-        $request->validate([
-            'title' => 'required'
-        ]);
-
-        $data = $request->all();
-
-        $sub->update($data);
-
-        return redirect()->back()->with('success', 'تم تعديل القسم بنجاح');
+        //
     }
 
     /**
@@ -106,8 +109,6 @@ class SubCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $sub = SubCategory::find($id);
-        $sub->delete();
-        return redirect(route('admin.subs'))->with('success', 'تم حذف القسم بنجاح');
+        //
     }
 }

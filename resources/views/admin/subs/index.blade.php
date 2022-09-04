@@ -27,6 +27,8 @@
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             منذ</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                            الشركة</th>
+                                        <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             تعديل</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             حذف</th>
@@ -37,13 +39,19 @@
                                     @foreach ($subs as $sub)
                                         <tr>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">{{ $sub->title }}</p>
+                                                <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
+                                                    {{ $sub->title }}</p>
                                             </td>
 
                                             <td class="align-middle text-center">
 
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $sub->created_at->diffForHumans() }}</span>
+                                            </td>
+
+                                            <td>
+                                                <p class="text-center text-xs font-weight-bold mb-0" style="margin-right:20px">
+                                                    {{ $sub->categories->title }}</p>
                                             </td>
 
                                             <td class="align-middle text-center">

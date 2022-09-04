@@ -16,7 +16,8 @@
         <div class="collapse navbar-collapse px-0 w-auto  max-height-vh-100" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::path() ==  'admin/users' ? 'active' : ''  }}" href="{{ route('admin.users') }}">
+                    <a class="nav-link {{ Request::path() == 'admin/users' ? 'active' : '' }}"
+                        href="{{ route('admin.users') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
@@ -24,7 +25,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::path() ==  'admin/addresses' ? 'active' : ''  }}" href="{{ route('admin.addresses') }}">
+                    <a class="nav-link {{ Request::path() == 'admin/addresses' ? 'active' : '' }}"
+                        href="{{ route('admin.addresses') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
@@ -32,7 +34,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::path() ==  'admin/news' ? 'active' : ''  }}" href="{{ route('admin.news') }}">
+                    <a class="nav-link {{ Request::path() == 'admin/news' ? 'active' : '' }}"
+                        href="{{ route('admin.news') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
@@ -40,7 +43,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::path() ==  'admin/banners' ? 'active' : ''  }}" href="{{ route('admin.banners') }}">
+                    <a class="nav-link {{ Request::path() == 'admin/banners' ? 'active' : '' }}"
+                        href="{{ route('admin.banners') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
@@ -48,21 +52,32 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::path() ==  'admin/categories' ? 'active' : ''  }}" href="{{ route('admin.categories') }}">
+                    <a class="nav-link {{ Request::path() == 'admin/categories' ? 'active' : '' }}"
+                        href="{{ route('admin.categories') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
                         <span class="nav-link-text me-1">الشركات</span>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link {{ Request::path() ==  'admin/subs' ? 'active' : ''  }}" href="{{ route('admin.subs') }}">
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::path() == 'admin/subs' ? 'active' : '' }}"
+                        href="{{ route('admin.subs') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
                         <span class="nav-link-text me-1">الأقسام</span>
                     </a>
-                </li> --}}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::path() == 'admin/products' ? 'active' : '' }}"
+                        href="{{ route('admin.products') }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">كل المنتجات</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">
