@@ -28,7 +28,13 @@ class AddressesController extends Controller
         $user = User::find($id);
         if (isset($user)) {
             $addresses = Address::where('user_id', $user->id)->get();
-            return $this->sendResponse(AddressesResource::collection($addresses), 'Addresses Receieved Successfully!');
+            if (Auth::user()->id == $addresses[0]->user_id) {
+                return $this->sendResponse(AddressesResource::collection($addresses), 'Addresses Receieved Successfully!');
+            }else{
+                return $this->sendError('You don\'t have the right to show this addresses');
+            }
+
+
         } else {
             return $this->sendError('there is no such user!');
         }
@@ -79,7 +85,11 @@ class AddressesController extends Controller
     {
         $address = Address::find($id);
         if (isset($address)) {
-            return $this->sendResponse(new AddressesResource($address), 'found successfully!');
+            if ($address->user_id == Auth::user()->id) {
+                return $this->sendResponse(new AddressesResource($address), 'found successfully!');
+            }else{
+                return $this->sendError('You don\'t have the right to show this addresses');
+            }
         } else {
             return $this->sendError('There is no address!');
         }
