@@ -28,21 +28,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::get('/user_addresses/{id}', [AddressesController::class, 'user_addresses']);
+
 
 Route::middleware('auth:api')->group(function(){
     Route::post('/add_address', [AddressesController::class, 'store']);
     Route::put('/edit_address/{id}', [AddressesController::class, 'update']);
     Route::post('/del_address/{id}', [AddressesController::class, 'destroy']);
+    Route::get('/user_addresses/{id}', [AddressesController::class, 'user_addresses']);
+    Route::get('/address/{id}', [AddressesController::class, 'show']);
 });
-
-Route::get('/address/{id}', [AddressesController::class, 'show']);
 
 Route::get('news', [NewsController::class, 'index']);
 Route::get('banners', [BannersController::class, 'index']);
 Route::get('categories', [CategoriesController::class, 'index']);
 Route::get('subcategories', [SubCategoriesController::class, 'index']);
 Route::get('subcategory/{id}', [SubCategoriesController::class, 'comCat']);
-// testing the server once more
+
 Route::get('products', [ProductsController::class, 'index']);
 Route::get('catproducts/{id}', [ProductsController::class, 'CatProducts']);
