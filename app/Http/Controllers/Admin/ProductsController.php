@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
+
 
 class ProductsController extends Controller
 {
@@ -86,7 +88,8 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('admin.products.index', compact('product'));
+        $subs = SubCategory::all();
+        return view('admin.products.edit', compact('product', 'subs'));
     }
 
     /**
@@ -98,7 +101,37 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'old_price' => 'required',
+            'new_price' => 'required',
+            'sub_id' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        if($request->hasfile('image')){
+            $file = $request->file('image');
+            $filepath = 'admin/images/products/'.date('Y').'/'.date('m').'/';
+            $filename =$filepath.time().'-'.$file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            if(request('old-image')){
+                $oldpath=request('old-image');
+                if(File::exists($oldpath)){
+                    unlink($oldpath);
+                }
+
+            }
+          $data['image'] = $filename;
+        }
+
+        $product->update($data);
+
+        return redirect()->back()->with('success', 'تم تعديل المنتج بنجاح');
     }
 
     /**
@@ -109,6 +142,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect(route('admin.products'))->with('success', 'تم حذف المنتج بنجاح');
     }
 }

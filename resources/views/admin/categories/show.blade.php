@@ -46,61 +46,63 @@
                                 </thead>
                                 <tbody>
                                     @isset($subs)
-                                        @foreach ($subs->products as $product)
-                                            <tr>
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
-                                                        {{ $product->title }}</p>
-                                                </td>
+                                        @for ($i = 0; $i < count($subs); $i++)
+                                            @foreach ($subs[$i]->products as $product)
+                                                <tr>
+                                                    <td>
+                                                        <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
+                                                            {{ $product->title }}</p>
+                                                    </td>
 
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
-                                                        {{ $product->description }}</p>
-                                                </td>
+                                                    <td>
+                                                        <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
+                                                            {{ $product->description }}</p>
+                                                    </td>
 
-                                                <td>
-                                                    <img class="img-thumbnail" style="height: 80px; width: 80px ;"
-                                                        src="{{ asset($product->image) }}" alt="product">
-                                                </td>
+                                                    <td>
+                                                        <img class="img-thumbnail" style="height: 80px; width: 80px ;"
+                                                            src="{{ asset($product->image) }}" alt="product">
+                                                    </td>
 
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
-                                                        {{ $product->old_price }}</p>
-                                                </td>
+                                                    <td>
+                                                        <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
+                                                            {{ $product->old_price }}</p>
+                                                    </td>
 
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
-                                                        {{ $product->new_price }}</p>
-                                                </td>
+                                                    <td>
+                                                        <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
+                                                            {{ $product->new_price }}</p>
+                                                    </td>
 
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
-                                                        {{ $product->subcategories->title }}</p>
-                                                </td>
+                                                    <td>
+                                                        <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
+                                                            {{ $product->subcategories->title }}</p>
+                                                    </td>
 
-                                                <td class="align-middle text-center">
+                                                    <td class="align-middle text-center">
 
-                                                    <span
-                                                        class="text-secondary text-xs font-weight-bold">{{ $category->created_at->diffForHumans() }}</span>
-                                                </td>
+                                                        <span
+                                                            class="text-secondary text-xs font-weight-bold">{{ $category->created_at->diffForHumans() }}</span>
+                                                    </td>
 
-                                                <td class="align-middle text-center">
-                                                    <a href="{{ route('admin.category.edit', $category->id) }}"
-                                                        class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                                                        data-original-title="Edit user">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                </td>
-                                                <td class="align-middle text-center">
-                                                    <a href="{{ route('admin.category.destroy', $category->id) }}"
-                                                        class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                                                        data-original-title="Delete user"
-                                                        onclick="return confirm('هل انت متأكد من حذف الشركة؟')">
-                                                        <i class="fa fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                                    <td class="align-middle text-center">
+                                                        <a href="{{ route('admin.category.edit', $category->id) }}"
+                                                            class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                                                            data-original-title="Edit user">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <a href="{{ route('admin.category.destroy', $category->id) }}"
+                                                            class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                                                            data-original-title="Delete user"
+                                                            onclick="return confirm('هل انت متأكد من حذف الشركة؟')">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endfor
                                     @else
                                         <div class="alert alert-danger text-center" role="alert">
                                             <h2>لا يوجد أقسام</h2>

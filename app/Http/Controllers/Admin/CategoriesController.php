@@ -72,7 +72,7 @@ class CategoriesController extends Controller
     {
         Carbon::setLocale('ar');
         $category = Category::find($id);
-        $subs = SubCategory::where('cat_id', $id)->first();
+        $subs = SubCategory::where('cat_id', $id)->get();
         return view('admin.categories.show', compact('category', 'subs'));
 
     }

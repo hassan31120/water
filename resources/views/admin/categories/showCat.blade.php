@@ -9,7 +9,7 @@
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
                             <div class="col-12">
                                 <h5 class="text-center text-white text-capitalize ps-3"
-                                    style="margin-right: 10px; font-weight: 700;">{{ $sub->title }}
+                                    style="margin-right: 10px; font-weight: 700;">{{ $sub->title }} --> {{ $sub->categories->title }}
                                 </h5>
                             </div>
                         </div>

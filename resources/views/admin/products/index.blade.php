@@ -100,7 +100,7 @@
                                                 <a href="{{ route('admin.product.destroy', $product->id) }}"
                                                     class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                     data-original-title="Delete user"
-                                                    onclick="return confirm('هل انت متأكد من حذف القسم؟')">
+                                                    onclick="return confirm('هل انت متأكد من حذف المنتج؟')">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>

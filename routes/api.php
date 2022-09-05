@@ -3,7 +3,10 @@
 use App\Http\Controllers\Api\AddressesController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BannersController;
+use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\SubCategoriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +40,9 @@ Route::get('/address/{id}', [AddressesController::class, 'show']);
  // testing server
 Route::get('news', [NewsController::class, 'index']);
 Route::get('banners', [BannersController::class, 'index']);
+Route::get('categories', [CategoriesController::class, 'index']);
+Route::get('subcategories', [SubCategoriesController::class, 'index']);
+Route::get('subcategory/{id}', [SubCategoriesController::class, 'comCat']);
+
+Route::get('products', [ProductsController::class, 'index']);
+Route::get('catproducts/{id}', [ProductsController::class, 'CatProducts']);
