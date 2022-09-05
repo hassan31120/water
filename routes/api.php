@@ -34,6 +34,6 @@ Route::middleware('auth:api')->group(function(){
 });
 
 Route::get('/address/{id}', [AddressesController::class, 'show']);
-
+ // testing server
 Route::get('news', [NewsController::class, 'index']);
 Route::get('banners', [BannersController::class, 'index']);
