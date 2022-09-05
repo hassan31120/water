@@ -43,6 +43,6 @@ Route::get('banners', [BannersController::class, 'index']);
 Route::get('categories', [CategoriesController::class, 'index']);
 Route::get('subcategories', [SubCategoriesController::class, 'index']);
 Route::get('subcategory/{id}', [SubCategoriesController::class, 'comCat']);
-
+// testing the server once more
 Route::get('products', [ProductsController::class, 'index']);
 Route::get('catproducts/{id}', [ProductsController::class, 'CatProducts']);
