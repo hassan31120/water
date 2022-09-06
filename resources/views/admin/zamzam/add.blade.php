@@ -7,9 +7,9 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
                         <div class="col-6">
-                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">تعديل المنتج</h5>
+                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">إضافة منتج جديد</h5>
                         </div>
-                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.products') }}"
+                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.zamzam') }}"
                                 style="position: absolute; left: 2%" class="btn btn-primary">عرض المنتجات</a></div>
                     </div>
                 </div>
@@ -24,8 +24,8 @@
                                             <div class="card shadow-2-strong card-registration"
                                                 style="border-radius: 15px;">
                                                 <div class="card-body p-4 p-md-5">
-                                                    <form action="{{ route('admin.product.update', $product->id) }}"
-                                                        method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('admin.zamzam.store') }}" method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
 
                                                         <div class="row">
@@ -34,7 +34,7 @@
                                                                     <label class="form-label" for="title"
                                                                         style="font-size: 18px">الإسم</label>
                                                                     <input type="text" name="title" id="title"
-                                                                        class="form-control form-control-lg formborderCSS" required value="{{ $product->title }}"/>
+                                                                        class="form-control form-control-lg formborderCSS" required />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -45,7 +45,7 @@
                                                                     <label class="form-label" for="description"
                                                                         style="font-size: 18px">الوصف</label>
                                                                     <textarea name="description" id="description" cols="30" rows="5"
-                                                                    class="form-control form-control-lg formborderCSS" required>{{ $product->description }}</textarea>
+                                                                    class="form-control form-control-lg formborderCSS" required></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -56,7 +56,7 @@
                                                                     <label class="form-label" for="amount"
                                                                         style="font-size: 18px">الكمية</label>
                                                                     <input type="text" name="amount" id="amount"
-                                                                        class="form-control form-control-lg formborderCSS" required value="{{ $product->amount }}" />
+                                                                        class="form-control form-control-lg formborderCSS" required />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -67,7 +67,7 @@
                                                                     <label class="form-label" for="old_price"
                                                                         style="font-size: 18px">السعر القديم</label>
                                                                     <input type="number" name="old_price" id="old_price" step=".01"
-                                                                        class="form-control form-control-lg formborderCSS" required value="{{ $product->old_price }}"/>
+                                                                        class="form-control form-control-lg formborderCSS" required />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 mb-4">
@@ -75,7 +75,7 @@
                                                                     <label class="form-label" for="new_price"
                                                                         style="font-size: 18px">السعر الجديد</label>
                                                                     <input type="number" name="new_price" id="new_price" step=".01"
-                                                                        class="form-control form-control-lg formborderCSS" required value="{{ $product->new_price }}" />
+                                                                        class="form-control form-control-lg formborderCSS" required />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -85,38 +85,15 @@
                                                                 <div class="form-outline">
                                                                     <label class="form-label" for="image"
                                                                         style="font-size: 18px">الصورة</label>
-                                                                        <div class="row">
-                                                                            <div class="col-6">
-                                                                                <img src="{{ asset($product->image) }}" class="img-thumbnail" alt="product image"> </div>
-                                                                            <div class="col-6">
-                                                                                <input type="file" name="image" id="image"
-                                                                        class="form-control form-control-lg formborderCSS" />
-                                                                            </div>
-                                                                        </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="form-group mx-sm-3 mb-2">
-                                                                    <label class="form-label" for="sub_id"
-                                                                        style="font-size: 18px">اختيار قسم - شركة</label>
-                                                                    <select name="sub_id" id="sub_id" class="form-control form-control-lg formborderCSS"
-                                                                        class="form-control" required>
-                                                                        @foreach ($subs as $sub)
-                                                                            <option value="{{ $sub->id }}" {{isset($product) ? $product->sub_id == $sub->id ? 'selected' : '' : old('sub_id')}} >
-                                                                                {{ $sub->title }} -> {{ $sub->categories->title }}</option>
-                                                                        @endforeach
-                                                                    </select>
+                                                                    <input type="file" name="image" id="image"
+                                                                        class="form-control form-control-lg formborderCSS" required />
                                                                 </div>
                                                             </div>
                                                         </div>
 
                                                         <div class="mt-4 pt-2 text-center">
                                                             <input class="btn btn-primary btn-lg" type="submit"
-                                                                value="تعديل" />
+                                                                value="إضافة" />
                                                         </div>
 
                                                     </form>

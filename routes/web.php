@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\AddressesController;
 use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\MasajedController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\ZamzamController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -91,4 +93,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::get('/product/edit/{id}', [ProductsController::class, 'edit'])->name('admin.product.edit');
     Route::post('/product/update/{id}', [ProductsController::class, 'update'])->name('admin.product.update');
     Route::get('/product/destroy/{id}', [ProductsController::class, 'destroy'])->name('admin.product.destroy');
+
+    // zamzam
+    Route::get('/zamzam', [ZamzamController::class, 'index'])->name('admin.zamzam');
+    Route::get('/zamzam/create', [ZamzamController::class, 'create'])->name('admin.zamzam.create');
+    Route::post('/zamzam/store', [ZamzamController::class, 'store'])->name('admin.zamzam.store');
+    Route::get('/zamzam/edit/{id}', [ZamzamController::class, 'edit'])->name('admin.zamzam.edit');
+    Route::post('/zamzam/update/{id}', [ZamzamController::class, 'update'])->name('admin.zamzam.update');
+    Route::get('/zamzam/destroy/{id}', [ZamzamController::class, 'destroy'])->name('admin.zamzam.destroy');
+
+     // masajed
+     Route::get('/masajed', [MasajedController::class, 'index'])->name('admin.masajed');
+     Route::get('/masajed/create', [MasajedController::class, 'create'])->name('admin.masajed.create');
+     Route::post('/masajed/store', [MasajedController::class, 'store'])->name('admin.masajed.store');
+     Route::get('/masajed/edit/{id}', [MasajedController::class, 'edit'])->name('admin.masajed.edit');
+     Route::post('/masajed/update/{id}', [MasajedController::class, 'update'])->name('admin.masajed.update');
+     Route::get('/masajed/destroy/{id}', [MasajedController::class, 'destroy'])->name('admin.masajed.destroy');
 });

@@ -9,7 +9,7 @@
                         <div class="col-6">
                             <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">تعديل المنتج</h5>
                         </div>
-                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.products') }}"
+                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.masajed') }}"
                                 style="position: absolute; left: 2%" class="btn btn-primary">عرض المنتجات</a></div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                                             <div class="card shadow-2-strong card-registration"
                                                 style="border-radius: 15px;">
                                                 <div class="card-body p-4 p-md-5">
-                                                    <form action="{{ route('admin.product.update', $product->id) }}"
+                                                    <form action="{{ route('admin.masajed.update', $product->id) }}"
                                                         method="POST" enctype="multipart/form-data">
                                                         @csrf
 
@@ -93,23 +93,6 @@
                                                                         class="form-control form-control-lg formborderCSS" />
                                                                             </div>
                                                                         </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="form-group mx-sm-3 mb-2">
-                                                                    <label class="form-label" for="sub_id"
-                                                                        style="font-size: 18px">اختيار قسم - شركة</label>
-                                                                    <select name="sub_id" id="sub_id" class="form-control form-control-lg formborderCSS"
-                                                                        class="form-control" required>
-                                                                        @foreach ($subs as $sub)
-                                                                            <option value="{{ $sub->id }}" {{isset($product) ? $product->sub_id == $sub->id ? 'selected' : '' : old('sub_id')}} >
-                                                                                {{ $sub->title }} -> {{ $sub->categories->title }}</option>
-                                                                        @endforeach
-                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>

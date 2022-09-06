@@ -13,7 +13,7 @@
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
-        <div class="collapse navbar-collapse px-0 w-auto  max-height-vh-100" id="sidenav-collapse-main">
+        <div class="collapse navbar-collapse px-0 w-auto  max-height-vh-100" style="height: 100%" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link {{ Request::path() == 'admin/users' ? 'active' : '' }}"
@@ -78,13 +78,24 @@
                         <span class="nav-link-text me-1">كل المنتجات</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::path() == 'admin/zamzam' ? 'active' : '' }}"
+                        href="{{ route('admin.zamzam') }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">مياة زمزم</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::path() == 'admin/masajed' ? 'active' : '' }}"
+                        href="{{ route('admin.masajed') }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">مياة المساجد</span>
+                    </a>
+                </li>
             </ul>
-        </div>
-        <div class="sidenav-footer position-absolute w-100 bottom-0 ">
-            <div class="mx-3">
-                <a class="btn bg-gradient-primary mt-4 w-100"
-                    href="https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree"
-                    type="button">Upgrade to pro</a>
-            </div>
         </div>
     </aside>

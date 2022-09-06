@@ -4,9 +4,12 @@ use App\Http\Controllers\Api\AddressesController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BannersController;
 use App\Http\Controllers\Api\CategoriesController;
+use App\Http\Controllers\Api\MasajedController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\SubCategoriesController;
+use App\Http\Controllers\Api\ZamzamController;
+use App\Http\Resources\ZamzamResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +49,6 @@ Route::get('subcategory/{id}', [SubCategoriesController::class, 'comCat']);
 
 Route::get('products', [ProductsController::class, 'index']);
 Route::get('catproducts/{id}', [ProductsController::class, 'CatProducts']);
+
+Route::get('zamzam', [ZamzamController::class, 'index']);
+Route::get('masajed', [MasajedController::class, 'index']);

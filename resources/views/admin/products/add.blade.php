@@ -7,10 +7,10 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
                         <div class="col-6">
-                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">إضافة قسم جديد</h5>
+                            <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px">إضافة منتج جديد</h5>
                         </div>
                         <div class="col-6" style="position: relative;"><a href="{{ route('admin.products') }}"
-                                style="position: absolute; left: 2%" class="btn btn-primary">عرض الأقسام</a></div>
+                                style="position: absolute; left: 2%" class="btn btn-primary">عرض المنتجات</a></div>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
