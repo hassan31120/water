@@ -21,7 +21,26 @@ class ZamzamController extends Controller
         $products = Zamzam::all();
         $products2 = Masajed::all();
 
-        return response()->json(['zamzam'=>ZamzamResource::collection($products), 'Masajed'=>MasajedResource::collection($products2)], 200);
+        // return response()->json([
+        //     'zamzam' => ZamzamResource::collection($products),
+        //     'Masajed' => MasajedResource::collection($products2)
+        // ], 200);
+
+        // return $this->specialResponse([]);
+
+        return response()->json(
+            [
+                [
+                    'title' => 'zamzam',
+                    'data' => ZamzamResource::collection($products)
+                ],
+                [
+                    'title' => 'masajed',
+                    'data' => MasajedResource::collection($products2)
+                ]
+            ],
+            200
+        );
     }
 
     /**
