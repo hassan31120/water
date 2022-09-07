@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController as Controller;
+use App\Http\Resources\MasajedResource;
 use App\Http\Resources\ZamzamResource;
+use App\Models\Masajed;
 use App\Models\Zamzam;
 use Illuminate\Http\Request;
 
@@ -17,7 +19,9 @@ class ZamzamController extends Controller
     public function index()
     {
         $products = Zamzam::all();
-        return $this->sendResponse(ZamzamResource::collection($products), 'success');
+        $products2 = Masajed::all();
+
+        return response()->json(['zamzam'=>ZamzamResource::collection($products), 'Masajed'=>MasajedResource::collection($products2)], 200);
     }
 
     /**
