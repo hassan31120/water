@@ -9,7 +9,7 @@
                 target="_blank">
 
                 <img src="{{ asset('admin/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="me-1 font-weight-bold text-white">Material Dashboard 2</span>
+                <span class="me-1 font-weight-bold text-white">ثجاج</span>
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
@@ -93,7 +93,7 @@
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
                         </div>
-                        <span class="nav-link-text me-1">مياة المساجد</span>
+                        <span class="nav-link-text me-1">عروض المساجد</span>
                     </a>
                 </li>
             </ul>
