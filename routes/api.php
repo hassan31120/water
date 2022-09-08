@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AddressesController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BannersController;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\MasajedController;
 use App\Http\Controllers\Api\NewsController;
@@ -45,6 +46,12 @@ Route::middleware('auth:api')->group(function(){
     Route::post('edit_profile', [UserController::class, 'editData']);
     Route::post('change_password', [UserController::class, 'change_password']);
     Route::get('profile', [UserController::class, 'profile']);
+
+    Route::post('addToCart/{id}', [CartController::class, 'addToCart']);
+    Route::get('cartItems', [CartController::class, 'cartItems']);
+    Route::post('addQuantity/{id}', [CartController::class, 'addQuantity']);
+    Route::post('rmQuantity/{id}', [CartController::class, 'rmQuantity']);
+    Route::post('removeItem/{id}', [CartController::class, 'removeItem']);
 
 });
 

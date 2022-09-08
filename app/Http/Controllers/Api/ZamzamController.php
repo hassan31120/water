@@ -32,10 +32,12 @@ class ZamzamController extends Controller
             [
                 [
                     'title' => 'zamzam',
+                    'description' => 'عروض خاصة لمياة زمزم',
                     'data' => ZamzamResource::collection($products)
                 ],
                 [
                     'title' => 'masajed',
+                    'description' => 'عروض خاصة لمياة المساجد',
                     'data' => MasajedResource::collection($products2)
                 ]
             ],
