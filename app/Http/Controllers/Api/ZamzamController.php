@@ -31,12 +31,12 @@ class ZamzamController extends Controller
         return response()->json(
             [
                 [
-                    'title' => 'zamzam',
+                    'title' => 'مياة زمزم',
                     'description' => 'عروض خاصة لمياة زمزم',
                     'data' => ZamzamResource::collection($products)
                 ],
                 [
-                    'title' => 'masajed',
+                    'title' => 'مياة المساجد',
                     'description' => 'عروض خاصة لمياة المساجد',
                     'data' => MasajedResource::collection($products2)
                 ]
