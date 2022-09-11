@@ -50,7 +50,7 @@ class UserController extends Controller
             return response()->json(['message' => $validator->errors()->first()], 400);
         }
         $user = User::whereEmail($request->email)->firstOrFail();
-        $user->verification_code = random_int(100000, 999999);
+        $user->verification_code = random_int(1000, 9999);
         $user->save();
 
         $resetData = [
@@ -63,8 +63,34 @@ class UserController extends Controller
 
         Notification::send($user, new PasswordReset($resetData));
 
-        return response()->json(['message' => 'تم إرسال الكود على بريدك الإلكتروني'], 200);
+        return response()->json([
+            'message' => 'تم إرسال الكود على بريدك الإلكتروني',
+            'id' => $user->id
+    ], 200);
 
+    }
+
+    public function confirm_code(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'code' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['message' => $validator->errors()->first()], 400);
+        }
+
+        $user = User::find($id);
+
+        if ($user->verification_code == $request['code']) {
+            return response()->json([
+                'success' => true,
+                'message' => 'the code is correct'
+            ], 200);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'the code is incorrect'
+            ], 200);
+        }
     }
 
     public function change_password(Request $request)

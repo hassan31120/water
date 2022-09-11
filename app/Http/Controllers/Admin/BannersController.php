@@ -93,10 +93,6 @@ class BannersController extends Controller
     {
         $banner = Banner::find($id);
 
-        $request->validate([
-            'image' => ['required']
-        ]);
-
         $data = $request->except(['old-image']);
 
         if($request->hasfile('image')){

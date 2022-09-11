@@ -56,6 +56,7 @@ Route::middleware('auth:api')->group(function(){
 });
 
 Route::post('send_code', [UserController::class, 'send_code']);
+Route::post('confirm_code/{id}', [UserController::class, 'confirm_code']);
 Route::post('password_reset', [UserController::class, 'password_reset']);
 
 Route::get('news', [NewsController::class, 'index']);
