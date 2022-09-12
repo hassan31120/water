@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController as Controller;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
@@ -31,6 +32,10 @@ class AuthController extends Controller
         $user = User::create($input);
         $success['token'] = $user->createToken('mohammedhassanwater')->accessToken;
         $success['name'] = $user->name;
+
+        $users = User::all();
+        $cart['user_id'] = $users[count($users) - 1]->id ;
+        Cart::create($cart);
 
         return $this->sendResponse($success, 'User has registered successfully');
     }

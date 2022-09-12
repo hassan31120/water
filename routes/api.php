@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\MasajedController;
 use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\OrdersController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\SubCategoriesController;
 use App\Http\Controllers\Api\UserController;
@@ -52,6 +53,9 @@ Route::middleware('auth:api')->group(function(){
     Route::post('addQuantity/{id}', [CartController::class, 'addQuantity']);
     Route::post('rmQuantity/{id}', [CartController::class, 'rmQuantity']);
     Route::post('removeItem/{id}', [CartController::class, 'removeItem']);
+
+    Route::post('confirm_order', [OrdersController::class, 'confirm_order']);
+    Route::get('order_details/{id}', [OrdersController::class, 'order_details']);
 
 });
 

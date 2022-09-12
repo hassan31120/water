@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\MasajedController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\UsersController;
@@ -102,11 +103,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::post('/zamzam/update/{id}', [ZamzamController::class, 'update'])->name('admin.zamzam.update');
     Route::get('/zamzam/destroy/{id}', [ZamzamController::class, 'destroy'])->name('admin.zamzam.destroy');
 
-     // masajed
-     Route::get('/masajed', [MasajedController::class, 'index'])->name('admin.masajed');
-     Route::get('/masajed/create', [MasajedController::class, 'create'])->name('admin.masajed.create');
-     Route::post('/masajed/store', [MasajedController::class, 'store'])->name('admin.masajed.store');
-     Route::get('/masajed/edit/{id}', [MasajedController::class, 'edit'])->name('admin.masajed.edit');
-     Route::post('/masajed/update/{id}', [MasajedController::class, 'update'])->name('admin.masajed.update');
-     Route::get('/masajed/destroy/{id}', [MasajedController::class, 'destroy'])->name('admin.masajed.destroy');
+    // masajed
+    Route::get('/masajed', [MasajedController::class, 'index'])->name('admin.masajed');
+    Route::get('/masajed/create', [MasajedController::class, 'create'])->name('admin.masajed.create');
+    Route::post('/masajed/store', [MasajedController::class, 'store'])->name('admin.masajed.store');
+    Route::get('/masajed/edit/{id}', [MasajedController::class, 'edit'])->name('admin.masajed.edit');
+    Route::post('/masajed/update/{id}', [MasajedController::class, 'update'])->name('admin.masajed.update');
+    Route::get('/masajed/destroy/{id}', [MasajedController::class, 'destroy'])->name('admin.masajed.destroy');
+
+    //Orders
+    Route::get('/orders', [OrdersController::class, 'index'])->name('admin.orders');
+    Route::get('/order/{id}', [OrdersController::class, 'show'])->name('admin.order.details');
+    Route::post('/order/status/{id}', [OrdersController::class, 'changeStatus'])->name('order.status');
 });

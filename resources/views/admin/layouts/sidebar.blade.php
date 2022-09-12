@@ -34,6 +34,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ Request::path() == 'admin/orders' ? 'active' : '' }}"
+                        href="{{ route('admin.orders') }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">الطلبيات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ Request::path() == 'admin/news' ? 'active' : '' }}"
                         href="{{ route('admin.news') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
