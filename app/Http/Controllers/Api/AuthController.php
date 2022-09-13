@@ -20,7 +20,8 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'number' => 'required|numeric',
             'password' => 'required',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
+            'push_token' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -29,6 +30,7 @@ class AuthController extends Controller
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
+        $input['push_token'] = $request['push_token'];
         $user = User::create($input);
         $success['token'] = $user->createToken('mohammedhassanwater')->accessToken;
         $success['name'] = $user->name;
@@ -43,11 +45,17 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
+        $request->validate([
+            'push_token' => 'required'
+        ]);
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 
-            $user = Auth::user();
+            $user =  User::find(Auth::user()->id);
             $success['token'] = $user->createToken('mohammedhassanwater')->accessToken;
             $success['name'] = $user->name;
+            $user['push_token'] = $request['push_token'];
+            $user->save();
             return $this->sendResponse($success, 'User has login successfully');
         } else {
             return response()->json(

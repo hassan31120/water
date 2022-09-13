@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('number')->nullable();
             $table->integer('userType')->default(0);
             $table->string('password');
+            $table->string('shop_token')->nullable();
             $table->integer('verification_code')->nullable();
             $table->rememberToken();
             $table->timestamps();

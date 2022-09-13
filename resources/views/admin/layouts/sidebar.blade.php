@@ -25,6 +25,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ Request::path() == 'admin/noti' ? 'active' : '' }}"
+                        href="{{ route('admin.noti') }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">الإشعارات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ Request::path() == 'admin/addresses' ? 'active' : '' }}"
                         href="{{ route('admin.addresses') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">

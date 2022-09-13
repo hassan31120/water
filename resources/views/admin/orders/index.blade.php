@@ -30,10 +30,10 @@
                                             العنوان</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             الحالة</th>
-                                            <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
-                                                تفاصيل الطلب</th>
-                                                <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
-                                                    الموافقة أو الإلغاء</th>
+                                        <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                            تفاصيل الطلب</th>
+                                        <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                            الموافقة أو الإلغاء</th>
 
                                     </tr>
                                 </thead>
@@ -43,7 +43,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
-                                                       <h6 class="mb-0 text-sm">{{ $order->users->name }}</h6>
+                                                        <h6 class="mb-0 text-sm">{{ $order->users->name }}</h6>
                                                     </div>
                                                 </div>
                                             </td>
@@ -71,29 +71,38 @@
 
                                             <td>
                                                 <p class="text-center" style="margin-top: 30px">
-                                                    <a href="{{ route('admin.order.details', $order->id) }}" class="btn btn-info"> التفاصيل </a>
+                                                    <a href="{{ route('admin.order.details', $order->id) }}"
+                                                        class="btn btn-info"> التفاصيل </a>
                                                 </p>
                                             </td>
                                             <td>
                                                 <p class="text-center" style="margin-top: 30px">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <form action="{{ route('order.status', $order->id) }}" method="POST" class="text-center">
-                                                                @csrf
-                                                                <span class="tick-circle mr-5">
-                                                                    <input type="hidden" name="status" value="accepted">
-                                                                    <input type="submit" value="قبول" class="btn btn-success">
-                                                                </span>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-5"><form action="{{ route('order.status', $order->id) }}" method="POST" class="text-center">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <form action="{{ route('order.status', $order->id) }}"
+                                                            method="POST" class="text-center">
+                                                            @csrf
+                                                            <span class="tick-circle mr-5">
+                                                                <input type="hidden" name="status" value="accepted">
+                                                                <input type="submit" value="قبول"
+                                                                    class="btn btn-success">
+                                                            </span>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <form action="{{ route('order.status', $order->id) }}"
+                                                            method="POST" class="text-center">
                                                             @csrf
                                                             <span class="close-circle">
-                                                                <input type="hidden" name="status" value="rejected" class="btn btn-danger float-right">
-                                                                <input type="submit" value="رفض" onclick="return confirm('هل انت متأكد من رفض الطلب؟')" class="btn btn-danger">
+                                                                <input type="hidden" name="status" value="rejected"
+                                                                    class="btn btn-danger float-right">
+                                                                <input type="submit" value="رفض"
+                                                                    onclick="return confirm('هل انت متأكد من رفض الطلب؟')"
+                                                                    class="btn btn-danger">
                                                             </span>
-                                                        </form></div>
+                                                        </form>
                                                     </div>
+                                                </div>
 
 
                                                 </p>

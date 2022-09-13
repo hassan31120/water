@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\ZamzamController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -115,4 +116,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::get('/orders', [OrdersController::class, 'index'])->name('admin.orders');
     Route::get('/order/{id}', [OrdersController::class, 'show'])->name('admin.order.details');
     Route::post('/order/status/{id}', [OrdersController::class, 'changeStatus'])->name('order.status');
+
+    //Notifications
+    Route::get('/noti', [NotificationController::class, 'noti'])->name('admin.noti');
+    Route::post('/push', [NotificationController::class, 'push'])->name('admin.push');
 });
