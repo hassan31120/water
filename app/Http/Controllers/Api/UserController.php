@@ -83,12 +83,12 @@ class UserController extends Controller
         if ($user->verification_code == $request['code']) {
             return response()->json([
                 'success' => true,
-                'message' => 'the code is correct'
+                'message' => 'الكود صحيح'
             ], 200);
         }else{
             return response()->json([
                 'success' => false,
-                'message' => 'the code is incorrect'
+                'message' => 'الكود الذي ادخلته غير صحيح'
             ], 200);
         }
     }
@@ -129,7 +129,7 @@ class UserController extends Controller
         $user = User::where('verification_code',$request->code)->first();
         $user->password = Hash::make($request['password']);
         $user->save();
-        return response()->json(['success' => 'تم إعادة تعيين كلمة المرور بنجاح.'], 200);
+        return response()->json(['success' => true, 'message' => 'تم إعادة تعيين كلمة المرور بنجاح.'], 200);
     }
 
 }
