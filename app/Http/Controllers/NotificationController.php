@@ -24,7 +24,7 @@ class NotificationController extends Controller
 
         $users = User::all();
 
-        $SERVER_API_KEY = 'AAAAQB6Rw28:APA91bHOOMRW6SGa8PDmKtfX5S6XI1ztlUMCnzSs4Py0ONEbKY-8YjMf-U5Oyu7_amZiJtpuq8i3A-qjIHL1mSECva_KBvt9Kxlj1IqyzFAf3ZOhybwKDP-Zc5ghF1JpIZNBNs1GIjxf';
+        $SERVER_API_KEY = 'AAAADO97-wE:APA91bG3I5wEsaup_d66YxcL0Db36-XK_0Qb72h51CL5jaLWdZzxRzC6nMB7GRMtJhOXPeZ4H5ALt1grxCjvqga1haPCjEmQ-YtfvT8nZdB_XLE-A4b-xGHG5qtkCmifgyzf2cP9LKqv';
 
         // $token_1 = 'caD1lbZPTQu4CjP64vtoiz:APA91bE503t28_Al6INNcQuzqh-E1xoCxEslVCYS0DZgkUtyYcKxOxR4uJ-eTJLP9Er7kHkIx8M5k5eOjlCpdQQV3RxGr0dC901KQww43RMudZFAVoLO1LoJ-IeQCWZzQ99TIBx29VS8';
         // $token_2 = 'caD1lbZPTQu4CjP64vtoiz:APA91bE503t28_Al6INNcQuzqh-E1xoCxEslVCYS0DZgkUtyYcKxOxR4uJ-eTJLP9Er7kHkIx8M5k5eOjlCpdQQV3RxGr0dC901KQww43RMudZFAVoLO1LoJ-IeQCWZzQ99TIBx29VS8';
@@ -38,7 +38,7 @@ class NotificationController extends Controller
 
         $data = [
 
-            "registration_ids" => 
+            "registration_ids" =>
                 $token,
 
             "notification" => [
