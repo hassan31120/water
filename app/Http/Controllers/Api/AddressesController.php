@@ -29,7 +29,12 @@ class AddressesController extends Controller
         if (isset($user)) {
             $addresses = Address::where('user_id', $user->id)->get();
             if (Auth::user()->id == $addresses[0]->user_id) {
-                return $this->sendResponse(AddressesResource::collection($addresses), 'Addresses Receieved Successfully!');
+                if (count($addresses) > 0) {
+                    return $this->sendResponse(AddressesResource::collection($addresses), 'Addresses Receieved Successfully!');
+                }else{
+                    return response()->json([], 200);
+                }
+
             }else{
                 return $this->sendError('You don\'t have the right to show this addresses');
             }
