@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BaseController as Controller;
 use App\Http\Resources\AddressesResource;
 use App\Models\Address;
 use App\Models\User;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -28,18 +29,19 @@ class AddressesController extends Controller
         $user = User::find($id);
         if (isset($user)) {
             $addresses = Address::where('user_id', $user->id)->get();
-            if (Auth::user()->id == $addresses[0]->user_id) {
-                if (count($addresses) > 0) {
+            if (count($addresses)) {
+                if (Auth::user()->id == $addresses[0]->user_id) {
                     return $this->sendResponse(AddressesResource::collection($addresses), 'Addresses Receieved Successfully!');
-                }else{
-                    return response()->json([], 200);
+                } else {
+                    return $this->sendError('You don\'t have the right to show this addresses');
                 }
-
-            }else{
-                return $this->sendError('You don\'t have the right to show this addresses');
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'data' => [],
+                    'message' => 'Addresses Receieved Successfully!'
+                ], 200);
             }
-
-
         } else {
             return $this->sendError('there is no such user!');
         }
@@ -92,7 +94,7 @@ class AddressesController extends Controller
         if (isset($address)) {
             if ($address->user_id == Auth::user()->id) {
                 return $this->sendResponse(new AddressesResource($address), 'found successfully!');
-            }else{
+            } else {
                 return $this->sendError('You don\'t have the right to show this addresses');
             }
         } else {
@@ -136,10 +138,9 @@ class AddressesController extends Controller
             $input = $request->all();
             $address->update($input);
             return response()->json(['message' => 'Address updated Successfully!']);
-        }else{
+        } else {
             return $this->sendError('you don\'t have the right to edit this address !!!');
         }
-
     }
 
     /**
@@ -154,7 +155,7 @@ class AddressesController extends Controller
         if ($address->user_id == Auth::user()->id) {
             $address->delete();
             return response()->json(['message' => 'Address Deleted Successfully!']);
-        }else{
+        } else {
             return $this->sendError('you don\'t have the right to delete this address !!!');
         }
     }
