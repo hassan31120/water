@@ -41,7 +41,7 @@ Route::middleware('auth:api')->group(function(){
     Route::post('/add_address', [AddressesController::class, 'store']);
     Route::put('/edit_address/{id}', [AddressesController::class, 'update']);
     Route::post('/del_address/{id}', [AddressesController::class, 'destroy']);
-    Route::get('/user_addresses/{id}', [AddressesController::class, 'user_addresses']);
+    Route::get('/user_addresses', [AddressesController::class, 'user_addresses']);
     Route::get('/address/{id}', [AddressesController::class, 'show']);
 
     Route::post('edit_profile', [UserController::class, 'editData']);

@@ -24,9 +24,9 @@ class AddressesController extends Controller
         return $this->sendResponse(AddressesResource::collection($addresses), 'Addresses Receieved Successfully!');
     }
 
-    public function user_addresses($id)
+    public function user_addresses()
     {
-        $user = User::find($id);
+        $user = Auth::user();
         if (isset($user)) {
             $addresses = Address::where('user_id', $user->id)->get();
             if (count($addresses)) {
