@@ -22,8 +22,8 @@ class MasajedResource extends JsonResource
             'description' => $this->description,
             'image' => asset($this->image),
             'amount' => $this->amount,
-            'old_price' => $this->old_price,
-            'new_price' => $this->new_price,
+            'old_price' =>(double) $this->old_price,
+            'new_price' =>(double) $this->new_price,
         ];
     }
 }
