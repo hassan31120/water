@@ -49,6 +49,8 @@ Route::middleware('auth:api')->group(function(){
     Route::get('profile', [UserController::class, 'profile']);
 
     Route::post('addToCart/{id}', [CartController::class, 'addToCart']);
+    Route::post('zamzamToCart/{id}', [CartController::class, 'zamzamToCart']);
+    Route::post('masajedToCart/{id}', [CartController::class, 'masajedToCart']);
     Route::get('cartItems', [CartController::class, 'cartItems']);
     Route::post('addQuantity/{id}', [CartController::class, 'addQuantity']);
     Route::post('rmQuantity/{id}', [CartController::class, 'rmQuantity']);

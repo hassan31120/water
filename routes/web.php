@@ -114,6 +114,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
     //Orders
     Route::get('/orders', [OrdersController::class, 'index'])->name('admin.orders');
+    Route::get('/accepted_orders', [OrdersController::class, 'accepted'])->name('admin.orders.accepted');
+    Route::get('/rejected_orders', [OrdersController::class, 'rejected'])->name('admin.orders.rejected');
     Route::get('/order/{id}', [OrdersController::class, 'show'])->name('admin.order.details');
     Route::post('/order/status/{id}', [OrdersController::class, 'changeStatus'])->name('order.status');
 

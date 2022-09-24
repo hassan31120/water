@@ -18,8 +18,22 @@ class OrdersController extends Controller
     public function index()
     {
         Carbon::setLocale('ar');
-        $orders = Order::all();
+        $orders = Order::where('status', 'pending')->get();
         return view('admin.orders.index', compact('orders'));
+    }
+
+    public function accepted()
+    {
+        Carbon::setLocale('ar');
+        $orders = Order::where('status', 'accepted')->get();
+        return view('admin.orders.accepted', compact('orders'));
+    }
+
+    public function rejected()
+    {
+        Carbon::setLocale('ar');
+        $orders = Order::where('status', 'rejected')->get();
+        return view('admin.orders.rejected', compact('orders'));
     }
 
     public function changeStatus(Request $request, $id)

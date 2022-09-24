@@ -6,7 +6,9 @@ use App\Http\Controllers\Api\BaseController as Controller;
 use App\Http\Resources\CartResource;
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\Masajed;
 use App\Models\Product;
+use App\Models\Zamzam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,11 +34,15 @@ class CartController extends Controller
                     $cart['total'] +=  $item['new_price'];
                 }
                 $cart->save();
+                $count = 0;
+                foreach ($items as $item){
+                    $count += $item['quantity'];
+                }
                 return response()->json([
                     'success' => true,
                     'subTotal' => $cart['subTotal'],
                     'total' => $cart['total'],
-                    'items' => count($items),
+                    'items' => $count,
                     'products' => CartResource::collection($items)
                 ], 200);
             } else {
@@ -52,6 +58,28 @@ class CartController extends Controller
         $product = Product::find($id);
         if ($product) {
             if (Auth::user()->cart) {
+
+                $selectedItem = CartItem::where('cart_id', Auth::user()->cart->id)->where('title', $product->title)->where('description', $product->description)->where('amount', $product->amount)->where('image', $product->image)->first();
+
+                if ($selectedItem) {
+                    $selectedItem->old_price += $selectedItem->old_price / $selectedItem->quantity;
+                    $selectedItem->new_price += $selectedItem->new_price / $selectedItem->quantity;
+                    $selectedItem->quantity += 1;
+                    $selectedItem->save();
+
+                    $cart = Cart::where('user_id', Auth::user()->id)->first();
+                    $items = CartItem::where('cart_id', $cart->id)->get();
+
+                    $cart['subtotal'] = 0;
+                    $cart['total'] = 0;
+                    foreach ($items as $item) {
+                        $cart['subtotal'] +=  $item['old_price'];
+                        $cart['total'] +=  $item['new_price'];
+                    }
+                    $cart->save();
+
+                    return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                }
 
                 $item['title'] = $product->title;
                 $item['description'] = $product->description;
@@ -197,6 +225,172 @@ class CartController extends Controller
             }
         } else {
             return response()->json(['message' => 'there is no such item'], 200);
+        }
+    }
+
+    public function zamzamToCart($id)
+    {
+        $zamzam = Zamzam::find($id);
+        if ($zamzam) {
+            if (Auth::user()->cart) {
+
+                $selectedItem = CartItem::where('cart_id', Auth::user()->cart->id)->where('title', $zamzam->title)->where('description', $zamzam->description)->where('amount', $zamzam->amount)->where('image', $zamzam->image)->first();
+
+                if ($selectedItem) {
+                    $selectedItem->old_price += $selectedItem->old_price / $selectedItem->quantity;
+                    $selectedItem->new_price += $selectedItem->new_price / $selectedItem->quantity;
+                    $selectedItem->quantity += 1;
+                    $selectedItem->save();
+
+                    $cart = Cart::where('user_id', Auth::user()->id)->first();
+                    $items = CartItem::where('cart_id', $cart->id)->get();
+
+                    $cart['subtotal'] = 0;
+                    $cart['total'] = 0;
+                    foreach ($items as $item) {
+                        $cart['subtotal'] +=  $item['old_price'];
+                        $cart['total'] +=  $item['new_price'];
+                    }
+                    $cart->save();
+
+                    return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                }
+
+                $item['title'] = $zamzam->title;
+                $item['description'] = $zamzam->description;
+                $item['amount'] = $zamzam->amount;
+                $item['image'] = $zamzam->image;
+                $item['old_price'] = $zamzam->old_price;
+                $item['new_price'] = $zamzam->new_price;
+                $item['cart_id'] = Auth::user()->cart->id;
+
+                CartItem::create($item);
+
+                $cart = Cart::where('user_id', Auth::user()->id)->first();
+                $items = CartItem::where('cart_id', $cart->id)->get();
+
+                $cart['subtotal'] = 0;
+                $cart['total'] = 0;
+                foreach ($items as $item) {
+                    $cart['subtotal'] +=  $item['old_price'];
+                    $cart['total'] +=  $item['new_price'];
+                }
+                $cart->save();
+
+                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+            } else {
+
+                $cart['user_id'] = Auth::user()->id;
+                Cart::create($cart);
+
+                $item['title'] = $zamzam->title;
+                $item['description'] = $zamzam->description;
+                $item['amount'] = $zamzam->amount;
+                $item['image'] = $zamzam->image;
+                $item['old_price'] = $zamzam->old_price;
+                $item['new_price'] = $zamzam->new_price;
+                $item['cart_id'] = Auth::user()->cart->id;
+
+                CartItem::create($item);
+
+                $cart = Cart::where('user_id', Auth::user()->id)->first();
+                $items = CartItem::where('cart_id', $cart->id)->get();
+
+                $cart['subtotal'] = 0;
+                $cart['total'] = 0;
+                foreach ($items as $item) {
+                    $cart['subtotal'] +=  $item['old_price'];
+                    $cart['total'] +=  $item['new_price'];
+                }
+                $cart->save();
+
+                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+            }
+        } else {
+            return response()->json(['message' => 'there is no such product'], 200);
+        }
+    }
+
+    public function masajedToCart($id)
+    {
+        $masajed = Masajed::find($id);
+        if ($masajed) {
+            if (Auth::user()->cart) {
+
+                $selectedItem = CartItem::where('cart_id', Auth::user()->cart->id)->where('title', $masajed->title)->where('description', $masajed->description)->where('amount', $masajed->amount)->where('image', $masajed->image)->first();
+
+                if ($selectedItem) {
+                    $selectedItem->old_price += $selectedItem->old_price / $selectedItem->quantity;
+                    $selectedItem->new_price += $selectedItem->new_price / $selectedItem->quantity;
+                    $selectedItem->quantity += 1;
+                    $selectedItem->save();
+
+                    $cart = Cart::where('user_id', Auth::user()->id)->first();
+                    $items = CartItem::where('cart_id', $cart->id)->get();
+
+                    $cart['subtotal'] = 0;
+                    $cart['total'] = 0;
+                    foreach ($items as $item) {
+                        $cart['subtotal'] +=  $item['old_price'];
+                        $cart['total'] +=  $item['new_price'];
+                    }
+                    $cart->save();
+
+                    return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                }
+
+                $item['title'] = $masajed->title;
+                $item['description'] = $masajed->description;
+                $item['amount'] = $masajed->amount;
+                $item['image'] = $masajed->image;
+                $item['old_price'] = $masajed->old_price;
+                $item['new_price'] = $masajed->new_price;
+                $item['cart_id'] = Auth::user()->cart->id;
+
+                CartItem::create($item);
+
+                $cart = Cart::where('user_id', Auth::user()->id)->first();
+                $items = CartItem::where('cart_id', $cart->id)->get();
+
+                $cart['subtotal'] = 0;
+                $cart['total'] = 0;
+                foreach ($items as $item) {
+                    $cart['subtotal'] +=  $item['old_price'];
+                    $cart['total'] +=  $item['new_price'];
+                }
+                $cart->save();
+
+                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+            } else {
+
+                $cart['user_id'] = Auth::user()->id;
+                Cart::create($cart);
+
+                $item['title'] = $masajed->title;
+                $item['description'] = $masajed->description;
+                $item['amount'] = $masajed->amount;
+                $item['image'] = $masajed->image;
+                $item['old_price'] = $masajed->old_price;
+                $item['new_price'] = $masajed->new_price;
+                $item['cart_id'] = Auth::user()->cart->id;
+
+                CartItem::create($item);
+
+                $cart = Cart::where('user_id', Auth::user()->id)->first();
+                $items = CartItem::where('cart_id', $cart->id)->get();
+
+                $cart['subtotal'] = 0;
+                $cart['total'] = 0;
+                foreach ($items as $item) {
+                    $cart['subtotal'] +=  $item['old_price'];
+                    $cart['total'] +=  $item['new_price'];
+                }
+                $cart->save();
+
+                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+            }
+        } else {
+            return response()->json(['message' => 'there is no such product'], 200);
         }
     }
 }

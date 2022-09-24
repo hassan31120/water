@@ -10,6 +10,8 @@
                             <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px; font-weight: 700;">
                                 طلب {{ $order->users->name }}</h5>
                         </div>
+                        <div class="col-6" style="position: relative;"><a href="{{ route('admin.orders') }}"
+                            style="position: absolute; left: 2%" class="btn btn-primary"> الطلبيات </a></div>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">

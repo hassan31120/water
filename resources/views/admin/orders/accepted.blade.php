@@ -8,11 +8,11 @@
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 row">
                         <div class="col-6">
                             <h5 class="text-white text-capitalize ps-3" style="margin-right: 10px; font-weight: 700;">جدول
-                                الطلبيات</h5>
+                                الطلبيات المقبولة</h5>
                         </div>
                         <div class="col-6" style="position: relative;">
                             <div style="position: absolute; left: 2%">
-                                <a href="{{ route('admin.orders.accepted') }}" class="btn btn-primary" style="margin-left: 10px">الموافقات</a>
+                                <a href="{{ route('admin.orders') }}" class="btn btn-primary" style="margin-left: 10px">المعلقة</a>
                                 <a href="{{ route('admin.orders.rejected') }}" class="btn btn-primary">المرفوض</a>
                             </div>
                         </div>
@@ -36,12 +36,12 @@
                                             العنوان</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             السعر</th>
-                                            <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             الحالة</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             تفاصيل الطلب</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
-                                            الموافقة أو الإلغاء</th>
+                                            تعليق </th>
 
                                     </tr>
                                 </thead>
@@ -90,38 +90,17 @@
                                                 </p>
                                             </td>
                                             <td>
-                                                <p class="text-center" style="margin-top: 30px">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <form action="{{ route('order.status', $order->id) }}"
-                                                            method="POST" class="text-center">
-                                                            @csrf
-                                                            <span class="tick-circle mr-5">
-                                                                <input type="hidden" name="status" value="accepted">
-                                                                <input type="submit" value="قبول"
-                                                                    class="btn btn-success" style="margin-left: -35px">
-                                                            </span>
-                                                        </form>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <form action="{{ route('order.status', $order->id) }}"
-                                                            method="POST" class="text-center">
-                                                            @csrf
-                                                            <span class="close-circle">
-                                                                <input type="hidden" name="status" value="rejected"
-                                                                    class="btn btn-danger float-right">
-                                                                <input type="submit" value="رفض"
-                                                                    onclick="return confirm('هل انت متأكد من رفض الطلب؟')"
-                                                                    class="btn btn-danger">
-                                                            </span>
-                                                        </form>
-                                                    </div>
-                                                </div>
-
-
+                                                <p class="text-center" style="margin-top: 30px:">
+                                                    <form action="{{ route('order.status', $order->id) }}" method="POST"
+                                                        class="text-center">
+                                                        @csrf
+                                                        <span class="tick-circle mr-5">
+                                                            <input type="hidden" name="status" value="Pending">
+                                                            <input type="submit" value="تعليق" class="btn btn-light">
+                                                        </span>
+                                                    </form>
                                                 </p>
                                             </td>
-
                                         </tr>
                                     @endforeach
                                 </tbody>

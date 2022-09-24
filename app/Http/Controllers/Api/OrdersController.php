@@ -65,7 +65,7 @@ class OrdersController extends Controller
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'this address don\'t belong to you'
+                'message' => 'this address doesn\'t belong to you'
             ], 200);
         }
     }
