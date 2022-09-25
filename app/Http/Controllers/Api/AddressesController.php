@@ -79,9 +79,12 @@ class AddressesController extends Controller
         $input = $request->all();
         $input['user_id'] = Auth::user()->id;
 
-        Address::create($input);
+       $address = Address::create($input);
 
-        return response()->json(['message' => 'Address Added Successfully!']);
+        return response()->json([
+            'success' => true,
+            'new_address' => new AddressesResource($address)
+        ]);
     }
 
     /**
@@ -156,11 +159,20 @@ class AddressesController extends Controller
     public function destroy($id)
     {
         $address = Address::find($id);
+        if($address){
         if ($address->user_id == Auth::user()->id) {
             $address->delete();
             return response()->json(['message' => 'Address Deleted Successfully!']);
         } else {
-            return $this->sendError('you don\'t have the right to delete this address !!!');
+            return response()->json([
+                'success' => false,
+                'message' => 'you don\'t have the right to delete this address !!!'
+            ], 200);
+        }} else{
+            return response()->json([
+                'success' => false,
+                'message' => 'There is no such address!'
+            ], 200);
         }
     }
 }

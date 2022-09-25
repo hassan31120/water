@@ -1,5 +1,5 @@
 <body class="g-sidenav-show rtl bg-gray-200">
-    <aside
+    <aside style="overflow: hidden"
         class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-end me-3 rotate-caret  bg-gradient-dark"
         id="sidenav-main">
         <div class="sidenav-header">
@@ -115,5 +115,10 @@
                     </a>
                 </li>
             </ul>
+            <div class="sidenav-footer position-absolute w-100 bottom-0 ">
+                <div class="mx-3">
+                  <a class="btn bg-gradient-primary mt-4 w-100" href="{{ route('logout') }}" type="button"><i class="fas fa-sign-out-alt"></i> تسحيل الخروج</a>
+                </div>
+              </div>
         </div>
     </aside>
