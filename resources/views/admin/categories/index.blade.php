@@ -1,5 +1,9 @@
 @extends('admin.layouts.main')
 
+@section('dash')
+الشركات
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12">
