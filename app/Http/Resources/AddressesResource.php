@@ -18,9 +18,10 @@ class AddressesResource extends JsonResource
 
         return [
             'id' => $this->id,
+            'name' => $this->name,
+            'number' => $this->number,
             'title' => $this->title,
-            'description' => $this->description,
-            'user_id' => $this->user_id
+            'description' => $this->description
         ];
     }
 }
