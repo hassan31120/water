@@ -26,9 +26,11 @@ class AddressesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required'],
-            'user_id' => ['required']
+            'title' => 'required|string|max:255',
+            'description' => 'required',
+            'name' => 'required',
+            'number' => 'required|numeric',
+            'user_id' => 'required'
         ]);
 
         $data = $request->all();
@@ -55,9 +57,11 @@ class AddressesController extends Controller
         $address = Address::find($id);
 
         $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required'],
-            'user_id' => ['required']
+            'title' => 'required|string|max:255',
+            'description' => 'required',
+            'name' => 'required',
+            'number' => 'required|numeric',
+            'user_id' => 'required'
         ]);
 
         $data = $request->all();

@@ -24,7 +24,11 @@
                                     <th class="text-secondary font-weight-bolder opacity-7">المكان
                                     </th>
                                     <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
-                                        التفاصيل</th>
+                                        الإسم</th>
+                                        <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
+                                            الرقم</th>
+                                            <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
+                                                التفاصيل</th>
 
                                     <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                         منذ</th>
@@ -42,6 +46,14 @@
                                     <tr>
                                         <td>
                                             <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">{{ $address->title }}</p>
+                                        </td>
+
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $address->name }}</p>
+                                        </td>
+
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $address->number }}</p>
                                         </td>
 
                                         <td>

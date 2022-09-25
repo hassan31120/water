@@ -12,7 +12,9 @@ class Address extends Model
     protected $fillable = [
         'title',
         'description',
-        'user_id'
+        'user_id',
+        'name',
+        'number'
     ];
 
     public function users(){

@@ -30,6 +30,32 @@
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
                                                                 <div class="form-outline">
+                                                                    <label class="form-label" for="name"
+                                                                        style="font-size: 18px">الإسم</label>
+                                                                    <input type="text" name="name" id="name"
+                                                                        class="form-control form-control-lg formborderCSS"
+                                                                        required />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12 mb-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label" for="number"
+                                                                        style="font-size: 18px">الرقم</label>
+                                                                    <input type="number" name="number" id="number"
+                                                                        class="form-control form-control-lg formborderCSS"
+                                                                        required />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12 mb-4">
+                                                                <div class="form-outline">
                                                                     <label class="form-label" for="title"
                                                                         style="font-size: 18px">المكان</label>
                                                                     <input type="text" name="title" id="title"

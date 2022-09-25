@@ -67,6 +67,8 @@ class AddressesController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
+            'name' => 'required',
+            'number' => 'required|numeric',
             'description' => 'required'
         ]);
 
@@ -127,6 +129,8 @@ class AddressesController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
+            'name' => 'required',
+            'number' => 'required|numeric',
             'description' => 'required'
         ]);
 
