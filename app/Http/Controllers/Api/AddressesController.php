@@ -69,7 +69,9 @@ class AddressesController extends Controller
             'title' => 'required|string|max:255',
             'name' => 'required',
             'number' => 'required|numeric',
-            'description' => 'required'
+            'description' => 'required',
+            'governorate' => 'required',
+            'city' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -134,7 +136,9 @@ class AddressesController extends Controller
             'title' => 'required|string|max:255',
             'name' => 'required',
             'number' => 'required|numeric',
-            'description' => 'required'
+            'description' => 'required',
+            'governorate' => 'required',
+            'city' => 'required'
         ]);
 
         if ($validator->fails()) {

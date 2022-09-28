@@ -14,7 +14,11 @@ class Address extends Model
         'description',
         'user_id',
         'name',
-        'number'
+        'number',
+        'governorate',
+        'city',
+        'lat',
+        'long'
     ];
 
     public function users(){

@@ -33,7 +33,7 @@
                         <span class="nav-link-text me-1">الإشعارات</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ Request::path() == 'admin/addresses' ? 'active' : '' }}"
                         href="{{ route('admin.addresses') }}">
                         <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
@@ -41,7 +41,7 @@
                         </div>
                         <span class="nav-link-text me-1">العناوين</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link {{ Request::path() == 'admin/orders' ? 'active' : '' }}"
                         href="{{ route('admin.orders') }}">

@@ -21,7 +21,11 @@ class AddressesResource extends JsonResource
             'name' => $this->name,
             'number' => $this->number,
             'title' => $this->title,
-            'description' => $this->description
+            'description' => $this->description,
+            'governorate' => $this->governorate,
+            'city' => $this->city,
+            'lat' =>(double) $this->lat,
+            'long' =>(double) $this->long,
         ];
     }
 }
