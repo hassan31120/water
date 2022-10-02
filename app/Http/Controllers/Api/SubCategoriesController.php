@@ -33,7 +33,10 @@ class SubCategoriesController extends Controller
                 ], 200);
                 // return $this->sendResponse(SubCategoriesResource::collection($sub), 'success');
             }else{
-                return $this->sendError('there is no subcategories in this company');
+                return response()->json([
+                    'success' => true,
+                    'subcats' => SubCategoriesResource::collection($sub),
+                ], 200);
             }
 
         }else{
