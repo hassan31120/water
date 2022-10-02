@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\ProductsResource;
 
 class SubCategoriesResource extends JsonResource
 {
@@ -20,7 +21,7 @@ class SubCategoriesResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'cat_id' => $this->cat_id,
-            'products' => $this->products
+            'products' => ProductsResource::collection($this->products)
         ];
     }
 }
