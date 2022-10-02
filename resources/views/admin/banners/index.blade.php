@@ -53,7 +53,7 @@
                                         </td>
                                         @endisset
                                         <td>
-                                            <img class="img-thumbnail" style="height: 80px; width: 80px ;" src="{{ asset($banner->image) }}" alt="banner">
+                                            <img class="img-thumbnail" style="height: 80px; width: 120px ;" src="{{ asset($banner->image) }}" alt="banner">
                                         </td>
 
                                         <td class="align-middle text-center">

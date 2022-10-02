@@ -53,7 +53,8 @@
                                                                         <div class="row">
                                                                             <div class="col-6"><input type="file" name="image" id="title"
                                                                                 class="form-control form-control-lg formborderCSS" /></div>
-                                                                            <div class="col-6"> <img src="{{ asset($banner->image) }}" alt="banner"> </div>
+                                                                            <div class="col-6"> <img src="{{ asset($banner->image) }}" alt="banner" style="max-width: 300px;
+                                                                                max-height: 200px;"> </div>
                                                                         </div>
 
                                                                 </div>
