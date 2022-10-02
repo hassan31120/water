@@ -27,7 +27,11 @@ class SubCategoriesController extends Controller
         if ($cat) {
             $sub = SubCategory::where('cat_id', $id)->get();
             if (count($sub) > 0) {
-                return $this->sendResponse(SubCategoriesResource::collection($sub), 'success');
+                return response()->json([
+                    'success' => true,
+                    'subcats' => SubCategoriesResource::collection($sub),
+                ], 200);
+                // return $this->sendResponse(SubCategoriesResource::collection($sub), 'success');
             }else{
                 return $this->sendError('there is no subcategories in this company');
             }

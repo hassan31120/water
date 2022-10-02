@@ -20,6 +20,7 @@ class SubCategoriesResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'cat_id' => $this->cat_id,
+            'products' => $this->products
         ];
     }
 }
