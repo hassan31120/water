@@ -14,6 +14,10 @@ class Product extends Model
         'description',
         'amount',
         'image',
+        'image2',
+        'image3',
+        'image4',
+        'image5',
         'old_price',
         'new_price',
         'sub_id'

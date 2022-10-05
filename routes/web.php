@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\MasajedController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\UsersController;
@@ -97,6 +98,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::get('/product/edit/{id}', [ProductsController::class, 'edit'])->name('admin.product.edit');
     Route::post('/product/update/{id}', [ProductsController::class, 'update'])->name('admin.product.update');
     Route::get('/product/destroy/{id}', [ProductsController::class, 'destroy'])->name('admin.product.destroy');
+
+    Route::get('/product/images/{id}', [ProductsController::class, 'images'])->name('product.images');
+    // Route::get('/product/image/create/{id}', [ProductImagesController::class, 'create'])->name('product.image.create');
+    // Route::post('/product/image/store/{id}', [ProductImagesController::class, 'store'])->name('product.image.store');
+    // Route::get('/product/image/edit/{id}', [ProductImagesController::class, 'edit'])->name('product.image.edit');
+    // Route::post('/product/image/update/{id}', [ProductImagesController::class, 'update'])->name('product.image.update');
+    // Route::get('/product/image/destroy/{id}', [ProductImagesController::class, 'destroy'])->name('product.image.destroy');
 
     // zamzam
     Route::get('/zamzam', [ZamzamController::class, 'index'])->name('admin.zamzam');

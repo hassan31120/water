@@ -46,10 +46,10 @@ class CartController extends Controller
                     'products' => CartResource::collection($items)
                 ], 200);
             } else {
-                return response()->json(['message' => 'Your cart is empty!'], 200);
+                return response()->json(['success' => false, 'message' => 'Your cart is empty!'], 200);
             }
         } else {
-            return response()->json(['message' => 'Your cart is empty!'], 200);
+            return response()->json(['success' => false, 'message' => 'Your cart is empty!'], 200);
         }
     }
 
@@ -78,7 +78,7 @@ class CartController extends Controller
                     }
                     $cart->save();
 
-                    return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                    return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
                 }
 
                 $item['title'] = $product->title;
@@ -102,7 +102,7 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
             } else {
 
                 $cart['user_id'] = Auth::user()->id;
@@ -129,10 +129,10 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
             }
         } else {
-            return response()->json(['message' => 'there is no such product'], 200);
+            return response()->json(['success' => false, 'message' => 'there is no such product'], 200);
         }
     }
 
@@ -159,12 +159,12 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'quantity increased successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'quantity increased successfully'], 200);
             } else {
-                return response()->json(['message' => 'you dont have the right to do this'], 200);
+                return response()->json(['success' => false, 'message' => 'you dont have the right to do this'], 200);
             }
         } else {
-            return response()->json(['message' => 'there is no such item'], 200);
+            return response()->json(['success' => false, 'message' => 'there is no such item'], 200);
         }
     }
 
@@ -192,12 +192,12 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'quantity decreased successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'quantity decreased successfully'], 200);
             } else {
-                return response()->json(['message' => 'you dont have the right to do this'], 200);
+                return response()->json(['success' => false, 'message' => 'you dont have the right to do this'], 200);
             }
         } else {
-            return response()->json(['message' => 'there is no such item'], 200);
+            return response()->json(['success' => false, 'message' => 'there is no such item'], 200);
         }
     }
 
@@ -219,12 +219,12 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'item removed form cart successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'item removed form cart successfully'], 200);
             } else {
-                return response()->json(['message' => 'you dont have the right to do this'], 200);
+                return response()->json(['success' => false, 'message' => 'you dont have the right to do this'], 200);
             }
         } else {
-            return response()->json(['message' => 'there is no such item'], 200);
+            return response()->json(['success' => false, 'message' => 'there is no such item'], 200);
         }
     }
 
@@ -253,7 +253,7 @@ class CartController extends Controller
                     }
                     $cart->save();
 
-                    return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                    return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
                 }
 
                 $item['title'] = $zamzam->title;
@@ -277,7 +277,7 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
             } else {
 
                 $cart['user_id'] = Auth::user()->id;
@@ -304,7 +304,7 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
             }
         } else {
             return response()->json(['message' => 'there is no such product'], 200);
@@ -336,7 +336,7 @@ class CartController extends Controller
                     }
                     $cart->save();
 
-                    return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                    return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
                 }
 
                 $item['title'] = $masajed->title;
@@ -360,7 +360,7 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
             } else {
 
                 $cart['user_id'] = Auth::user()->id;
@@ -387,7 +387,7 @@ class CartController extends Controller
                 }
                 $cart->save();
 
-                return response()->json(['message' => 'Item Added to your cart successfully'], 200);
+                return response()->json(['success' => true, 'message' => 'Item Added to your cart successfully'], 200);
             }
         } else {
             return response()->json(['message' => 'there is no such product'], 200);

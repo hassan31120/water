@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use PhpParser\Node\Expr\Cast\Double;
 
 class CartResource extends JsonResource
 {
@@ -22,10 +23,10 @@ class CartResource extends JsonResource
             'description' => $this->description,
             'image' => asset($this->image),
             'amount' => $this->amount,
-            'old_price' => $this->old_price,
-            'new_price' => $this->new_price,
-            'quantity' => $this->quantity,
-            'cart_id' => $this->cart_id,
+            'old_price' =>(double) $this->old_price,
+            'new_price' =>(double) $this->new_price,
+            'quantity' =>(integer) $this->quantity,
+            'cart_id' =>(integer) $this->cart_id,
         ];
     }
 }

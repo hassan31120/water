@@ -31,7 +31,7 @@
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                             الوصف</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
-                                            الصورة</th>
+                                            منذ</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                             السعر القديم</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
@@ -41,7 +41,7 @@
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                             القسم</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
-                                            منذ</th>
+                                            الصور</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             تعديل</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
@@ -63,8 +63,8 @@
                                             </td>
 
                                             <td>
-                                                <img class="img-thumbnail" style="height: 80px; width: 80px ;"
-                                                    src="{{ asset($product->image) }}" alt="product">
+                                                <span
+                                                class="text-secondary text-xs font-weight-bold">{{ $product->created_at->diffForHumans() }}</span>
                                             </td>
 
                                             <td>
@@ -88,9 +88,7 @@
                                             </td>
 
                                             <td class="align-middle text-center">
-
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $product->created_at->diffForHumans() }}</span>
+                                                <a href="{{ route('product.images', $product->id) }}" class="btn btn-info"> عرض الصور </a>
                                             </td>
 
                                             <td class="align-middle text-center">
