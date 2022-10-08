@@ -26,7 +26,7 @@
                                             <div class="card shadow-2-strong card-registration"
                                                 style="border-radius: 15px;">
                                                 <div class="card-body p-4 p-md-5">
-                                                    <form action="{{ route('admin.push') }}" method="POST">
+                                                    <form action="{{ route('admin.push') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
 
                                                         <div class="row">
@@ -56,9 +56,9 @@
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label" for="image"
+                                                                    <label class="form-label" for="noti_image"
                                                                         style="font-size: 18px">الصورة</label>
-                                                                    <input type="text" name="image" id="image"
+                                                                    <input type="file" name="noti_image" id="noti_image"
                                                                         class="form-control form-control-lg formborderCSS" />
                                                                 </div>
                                                             </div>

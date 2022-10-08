@@ -24,10 +24,19 @@ class NotificationController extends Controller
 
         $users = User::all();
 
-        $SERVER_API_KEY = 'AAAADO97-wE:APA91bG3I5wEsaup_d66YxcL0Db36-XK_0Qb72h51CL5jaLWdZzxRzC6nMB7GRMtJhOXPeZ4H5ALt1grxCjvqga1haPCjEmQ-YtfvT8nZdB_XLE-A4b-xGHG5qtkCmifgyzf2cP9LKqv';
+        if ($request->hasFile('noti_image')) {
+            $file = $request->file('noti_image');
+            $filepath = 'storage/images/noti/' . date('Y') . '/' . date('m') . '/';
+            $filename = $filepath . time() . '-' . $file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            $noti['noti_image'] = $filename;
+            foreach($users as $user){
+                $user->noti_image = $filename;
+                $user->save();
+            }
+        }
 
-        // $token_1 = 'caD1lbZPTQu4CjP64vtoiz:APA91bE503t28_Al6INNcQuzqh-E1xoCxEslVCYS0DZgkUtyYcKxOxR4uJ-eTJLP9Er7kHkIx8M5k5eOjlCpdQQV3RxGr0dC901KQww43RMudZFAVoLO1LoJ-IeQCWZzQ99TIBx29VS8';
-        // $token_2 = 'caD1lbZPTQu4CjP64vtoiz:APA91bE503t28_Al6INNcQuzqh-E1xoCxEslVCYS0DZgkUtyYcKxOxR4uJ-eTJLP9Er7kHkIx8M5k5eOjlCpdQQV3RxGr0dC901KQww43RMudZFAVoLO1LoJ-IeQCWZzQ99TIBx29VS8';
+        $SERVER_API_KEY = 'AAAAuZcnJWg:APA91bFvOGDK9Ap2yOSEYsQP9R-aIpFUhkFx7j7T_yjlOENQKnMG4JPPOumjHr3XjXcqaD5Zlk4rhzjJEEzDuBq_4irgQMCF39SfeNtAMIdLtlBF5JMQWGShLiYdjM9btt69PK9bJA7j';
 
         $token = [];
         foreach ($users as $user) {
@@ -49,7 +58,7 @@ class NotificationController extends Controller
 
                 "sound" => "default", // required for sound on ios
 
-                "image" => $noti['image']
+                "image" => asset($noti['noti_image'])
 
             ],
 
