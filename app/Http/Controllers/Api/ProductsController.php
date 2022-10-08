@@ -7,6 +7,7 @@ use App\Http\Resources\ProductsResource;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductsController extends Controller
 {
@@ -34,6 +35,35 @@ class ProductsController extends Controller
         } else {
             return $this->sendError('There is no SubCategory');
         }
+    }
+
+    public function searchProducts(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'search' => 'required|string|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('please Validate error', $validator->errors());
+        }
+
+        $search = $request->input('search');
+
+        $products = Product::where('title', 'LIKE', "%{$search}%")->get();
+
+        if (count($products) > 0) {
+            return response()->json([
+                'success' => true,
+                'products' => ProductsResource::collection($products),
+                'message' => 'here is your products'
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'sorry, there are no products that match your search'
+            ], 200);
+        }
+
     }
 
     /**

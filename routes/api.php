@@ -73,6 +73,7 @@ Route::get('subcategory/{id}', [SubCategoriesController::class, 'comCat']);
 
 Route::get('products', [ProductsController::class, 'index']);
 Route::get('catproducts/{id}', [ProductsController::class, 'CatProducts']);
+Route::post('searchProducts', [ProductsController::class, 'searchProducts']);
 
 Route::get('special', [ZamzamController::class, 'index']);
 Route::get('masajed', [MasajedController::class, 'index']);
