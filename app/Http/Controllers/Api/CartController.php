@@ -35,7 +35,7 @@ class CartController extends Controller
                 }
                 $cart->save();
                 $count = 0;
-                foreach ($items as $item){
+                foreach ($items as $item) {
                     $count += $item['quantity'];
                 }
                 return response()->json([
@@ -176,23 +176,39 @@ class CartController extends Controller
 
             if ($item->carts->user->id == Auth::user()->id) {
 
-                $item->old_price -= $item->old_price / $item->quantity;
-                $item->new_price -= $item->new_price / $item->quantity;
-                $item->quantity -= 1;
-                $item->save();
+                if ($item->quantity == 1 || $item->quantity == 0) {
+                    $item->delete();
 
-                $cart = Cart::where('user_id', Auth::user()->id)->first();
-                $items = CartItem::where('cart_id', $cart->id)->get();
+                    $cart = Cart::where('user_id', Auth::user()->id)->first();
+                    $items = CartItem::where('cart_id', $cart->id)->get();
 
-                $cart['subtotal'] = 0;
-                $cart['total'] = 0;
-                foreach ($items as $item) {
-                    $cart['subtotal'] +=  $item['old_price'];
-                    $cart['total'] +=  $item['new_price'];
+                    $cart['subtotal'] = 0;
+                    $cart['total'] = 0;
+                    foreach ($items as $item) {
+                        $cart['subtotal'] +=  $item['old_price'];
+                        $cart['total'] +=  $item['new_price'];
+                    }
+                    $cart->save();
+                } else {
+
+                    $item->old_price -= $item->old_price / $item->quantity;
+                    $item->new_price -= $item->new_price / $item->quantity;
+                    $item->quantity -= 1;
+                    $item->save();
+
+                    $cart = Cart::where('user_id', Auth::user()->id)->first();
+                    $items = CartItem::where('cart_id', $cart->id)->get();
+
+                    $cart['subtotal'] = 0;
+                    $cart['total'] = 0;
+                    foreach ($items as $item) {
+                        $cart['subtotal'] +=  $item['old_price'];
+                        $cart['total'] +=  $item['new_price'];
+                    }
+                    $cart->save();
+
+                    return response()->json(['success' => true, 'message' => 'quantity decreased successfully'], 200);
                 }
-                $cart->save();
-
-                return response()->json(['success' => true, 'message' => 'quantity decreased successfully'], 200);
             } else {
                 return response()->json(['success' => false, 'message' => 'you dont have the right to do this'], 200);
             }
