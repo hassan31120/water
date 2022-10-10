@@ -95,6 +95,39 @@
                                                             </div>
                                                         </div>
 
+                                                        <div>
+                                                            <label class="form-label" for="image"
+                                                                style="font-size: 18px">صور إضافية</label>
+                                                            <div class="row">
+                                                                <div class="col-md-6 mb-4">
+                                                                    <div class="form-outline">
+                                                                        <input type="file" name="image2"
+                                                                            class="form-control form-control-lg formborderCSS" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mb-4">
+                                                                    <div class="form-outline">
+                                                                        <input type="file" name="image3"
+                                                                            class="form-control form-control-lg formborderCSS" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6 mb-4">
+                                                                    <div class="form-outline">
+                                                                        <input type="file" name="image4"
+                                                                            class="form-control form-control-lg formborderCSS" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mb-4">
+                                                                    <div class="form-outline">
+                                                                        <input type="file" name="image5"
+                                                                            class="form-control form-control-lg formborderCSS" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="mt-4 pt-2 text-center">
                                                             <input class="btn btn-primary btn-lg" type="submit"
                                                                 value="إضافة" />

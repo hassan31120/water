@@ -20,7 +20,8 @@ class Product extends Model
         'image5',
         'old_price',
         'new_price',
-        'sub_id'
+        'sub_id',
+        'is_special'
     ];
 
     public function subcategories(){

@@ -19,11 +19,16 @@ return new class extends Migration
             $table->text('description');
             $table->string('amount');
             $table->string('image');
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
+            $table->string('image5')->nullable();
             $table->float('old_price');
             $table->float('new_price');
             $table->unsignedBigInteger('sub_id');
             $table->foreign('sub_id')->references('id')->on('sub_categories')->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->tinyInteger('is_special')->default(0);
             $table->timestamps();
         });
     }

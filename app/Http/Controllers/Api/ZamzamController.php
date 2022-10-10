@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController as Controller;
 use App\Http\Resources\MasajedResource;
+use App\Http\Resources\ProductsResource;
 use App\Http\Resources\ZamzamResource;
 use App\Models\Masajed;
+use App\Models\Product;
 use App\Models\Zamzam;
 use Illuminate\Http\Request;
 
@@ -18,8 +20,8 @@ class ZamzamController extends Controller
      */
     public function index()
     {
-        $products = Zamzam::all();
-        $products2 = Masajed::all();
+        $products = Product::where('is_special', 1)->get();
+        $products2 = Product::where('is_special', 2)->get();
 
         // return response()->json([
         //     'zamzam' => ZamzamResource::collection($products),
@@ -33,12 +35,12 @@ class ZamzamController extends Controller
                 [
                     'title' => 'مياة زمزم',
                     'description' => 'عروض خاصة لمياة زمزم',
-                    'data' => ZamzamResource::collection($products)
+                    'data' => ProductsResource::collection($products)
                 ],
                 [
                     'title' => 'مياة المساجد',
                     'description' => 'عروض خاصة لمياة المساجد',
-                    'data' => MasajedResource::collection($products2)
+                    'data' => ProductsResource::collection($products2)
                 ]
             ],
             200

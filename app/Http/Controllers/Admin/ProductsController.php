@@ -20,7 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
         Carbon::setLocale('ar');
-        $products = Product::all();
+        $products = Product::where('is_special', 0)->get();
         return view('admin.products.index', compact('products'));
     }
 
@@ -31,7 +31,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $subs = SubCategory::all();
+        $subs = SubCategory::where('is_special', 0)->get();
         return view('admin.products.add', compact('subs'));
     }
 
@@ -127,7 +127,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        $subs = SubCategory::all();
+        $subs = SubCategory::where('is_special', 0)->get();
         return view('admin.products.edit', compact('product', 'subs'));
     }
 

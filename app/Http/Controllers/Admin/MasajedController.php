@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Masajed;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 
@@ -18,7 +19,7 @@ class MasajedController extends Controller
     public function index()
     {
         Carbon::setLocale('ar');
-        $products = Masajed::all();
+        $products = Product::where('is_special', 2)->get();
         return view('admin.masajed.index', compact('products'));
     }
 
@@ -50,6 +51,8 @@ class MasajedController extends Controller
         ]);
 
         $data = $request->all();
+        $data['is_special'] = 2;
+        $data['sub_id'] = 8;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -59,7 +62,7 @@ class MasajedController extends Controller
             $data['image'] = $filename;
         }
 
-        Masajed::create($data);
+        Product::create($data);
 
         return redirect(route('admin.masajed'))->with('success', 'تم إضافة المنتج بنجاح');
     }
@@ -83,7 +86,7 @@ class MasajedController extends Controller
      */
     public function edit($id)
     {
-        $product = Masajed::find($id);
+        $product = Product::find($id);
         return view('admin.masajed.edit', compact('product'));
     }
 
@@ -96,7 +99,7 @@ class MasajedController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Masajed::find($id);
+        $product = Product::find($id);
 
         $request->validate([
             'title' => 'required',
@@ -135,7 +138,7 @@ class MasajedController extends Controller
      */
     public function destroy($id)
     {
-        $product = Masajed::find($id);
+        $product = Product::find($id);
         $product->delete();
         return redirect(route('admin.masajed'))->with('success', 'تم حذف المنتج بنجاح');
     }

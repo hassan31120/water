@@ -31,12 +31,11 @@
                                             <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                                 الوصف</th>
                                             <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
-                                                الصورة</th>
-                                            <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                                 السعر القديم</th>
                                             <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                                 السعر الجديد</th>
-
+                                            <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                                الصور</th>
                                             <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                                 منذ</th>
                                             {{-- <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
@@ -60,11 +59,6 @@
                                                 </td>
 
                                                 <td>
-                                                    <img class="img-thumbnail" style="height: 80px; width: 80px ;"
-                                                        src="{{ asset($product->image) }}" alt="product">
-                                                </td>
-
-                                                <td>
                                                     <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
                                                         {{ $product->old_price }}</p>
                                                 </td>
@@ -72,6 +66,10 @@
                                                 <td>
                                                     <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
                                                         {{ $product->new_price }}</p>
+                                                </td>
+
+                                                <td class="align-middle text-center">
+                                                    <a href="{{ route('product.images', $product->id) }}" class="btn btn-info"> عرض الصور </a>
                                                 </td>
 
                                                 <td class="align-middle text-center">

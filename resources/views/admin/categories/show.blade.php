@@ -31,8 +31,6 @@
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                             الوصف</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
-                                            الصورة</th>
-                                        <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                             السعر القديم</th>
                                         <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                             السعر الجديد</th>
@@ -64,11 +62,6 @@
                                                     </td>
 
                                                     <td>
-                                                        <img class="img-thumbnail" style="height: 80px; width: 80px ;"
-                                                            src="{{ asset($product->image) }}" alt="product">
-                                                    </td>
-
-                                                    <td>
                                                         <p class="text-xs font-weight-bold mb-0" style="margin-right:20px">
                                                             {{ $product->old_price }}</p>
                                                     </td>
@@ -86,21 +79,21 @@
                                                     <td class="align-middle text-center">
 
                                                         <span
-                                                            class="text-secondary text-xs font-weight-bold">{{ $category->created_at->diffForHumans() }}</span>
+                                                            class="text-secondary text-xs font-weight-bold">{{ $product->created_at->diffForHumans() }}</span>
                                                     </td>
 
                                                     <td class="align-middle text-center">
-                                                        <a href="{{ route('admin.category.edit', $category->id) }}"
+                                                        <a href="{{ route('admin.product.edit', $product->id) }}"
                                                             class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                             data-original-title="Edit user">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                     </td>
                                                     <td class="align-middle text-center">
-                                                        <a href="{{ route('admin.category.destroy', $category->id) }}"
+                                                        <a href="{{ route('admin.product.destroy', $product->id) }}"
                                                             class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                             data-original-title="Delete user"
-                                                            onclick="return confirm('هل انت متأكد من حذف الشركة؟')">
+                                                            onclick="return confirm('هل انت متأكد من حذف المنتج؟')">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                     </td>

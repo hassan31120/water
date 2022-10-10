@@ -18,7 +18,7 @@ class SubCategoriesController extends Controller
     public function index()
     {
         Carbon::setLocale('ar');
-        $subs = SubCategory::all();
+        $subs = SubCategory::where('is_special', 0)->get();
         return view('admin.subs.index', compact('subs'));
     }
 
@@ -29,7 +29,7 @@ class SubCategoriesController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where('is_special', 0)->get();
         return view('admin.subs.add', compact('categories'));
     }
 
@@ -71,7 +71,7 @@ class SubCategoriesController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::all();
+        $categories = Category::where('is_special', 0)->get();
         $sub = SubCategory::find($id);
         return view('admin.subs.edit', compact('sub', 'categories'));
     }

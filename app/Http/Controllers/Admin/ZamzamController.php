@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Zamzam;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
@@ -18,7 +19,7 @@ class ZamzamController extends Controller
     public function index()
     {
         Carbon::setLocale('ar');
-        $products = Zamzam::all();
+        $products = Product::where('is_special', 1)->get();
         return view('admin.zamzam.index', compact('products'));
     }
 
@@ -50,6 +51,8 @@ class ZamzamController extends Controller
         ]);
 
         $data = $request->all();
+        $data['sub_id'] = 7;
+        $data['is_special'] = 1;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -59,7 +62,7 @@ class ZamzamController extends Controller
             $data['image'] = $filename;
         }
 
-        Zamzam::create($data);
+        Product::create($data);
 
         return redirect(route('admin.zamzam'))->with('success', 'تم إضافة المنتج بنجاح');
     }
@@ -83,7 +86,7 @@ class ZamzamController extends Controller
      */
     public function edit($id)
     {
-        $product = Zamzam::find($id);
+        $product = Product::find($id);
         return view('admin.zamzam.edit', compact('product'));
     }
 
@@ -96,7 +99,7 @@ class ZamzamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Zamzam::find($id);
+        $product = Product::find($id);
 
         $request->validate([
             'title' => 'required',
@@ -135,7 +138,7 @@ class ZamzamController extends Controller
      */
     public function destroy($id)
     {
-        $product = Zamzam::find($id);
+        $product = Product::find($id);
         $product->delete();
         return redirect(route('admin.zamzam'))->with('success', 'تم حذف المنتج بنجاح');
     }

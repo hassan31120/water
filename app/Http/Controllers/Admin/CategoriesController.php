@@ -20,7 +20,7 @@ class CategoriesController extends Controller
     public function index()
     {
         Carbon::setLocale('ar');
-        $categories = Category::all();
+        $categories = Category::where('is_special', 0)->get();
         return view('admin.categories.index', compact('categories'));
     }
 
