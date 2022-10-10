@@ -9,6 +9,7 @@ use App\Models\CartItem;
 use App\Models\Masajed;
 use App\Models\Product;
 use App\Models\Zamzam;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -189,6 +190,11 @@ class CartController extends Controller
                         $cart['total'] +=  $item['new_price'];
                     }
                     $cart->save();
+
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'item removed form cart successfully'
+                    ], 200);
                 } else {
 
                     $item->old_price -= $item->old_price / $item->quantity;
