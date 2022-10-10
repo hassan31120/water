@@ -56,6 +56,34 @@ class CategoriesController extends Controller
             $file->move($filepath, $filename);
             $data['image'] = $filename;
         }
+        if ($request->hasFile('image2')) {
+            $file = $request->file('image2');
+            $filepath = 'storage/images/products/' . date('Y') . '/' . date('m') . '/';
+            $filename = $filepath . time() . '-' . $file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            $data['image2'] = $filename;
+        }
+        if ($request->hasFile('image3')) {
+            $file = $request->file('image3');
+            $filepath = 'storage/images/products/' . date('Y') . '/' . date('m') . '/';
+            $filename = $filepath . time() . '-' . $file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            $data['image3'] = $filename;
+        }
+        if ($request->hasFile('image4')) {
+            $file = $request->file('image4');
+            $filepath = 'storage/images/products/' . date('Y') . '/' . date('m') . '/';
+            $filename = $filepath . time() . '-' . $file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            $data['image4'] = $filename;
+        }
+        if ($request->hasFile('image5')) {
+            $file = $request->file('image5');
+            $filepath = 'storage/images/products/' . date('Y') . '/' . date('m') . '/';
+            $filename = $filepath . time() . '-' . $file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            $data['image5'] = $filename;
+        }
 
         Category::create($data);
 
@@ -134,6 +162,64 @@ class CategoriesController extends Controller
             }
           $data['image'] = $filename;
         }
+
+
+        if($request->hasfile('image2')){
+            $file = $request->file('image2');
+            $filepath = 'storage/images/products/'.date('Y').'/'.date('m').'/';
+            $filename =$filepath.time().'-'.$file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            if(request('old-image2')){
+                $oldpath=request('old-image2');
+                if(File::exists($oldpath)){
+                    unlink($oldpath);
+                }
+            }
+          $data['image2'] = $filename;
+        }
+
+        if($request->hasfile('image3')){
+            $file = $request->file('image3');
+            $filepath = 'storage/images/products/'.date('Y').'/'.date('m').'/';
+            $filename =$filepath.time().'-'.$file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            if(request('old-image3')){
+                $oldpath=request('old-image3');
+                if(File::exists($oldpath)){
+                    unlink($oldpath);
+                }
+            }
+          $data['image3'] = $filename;
+        }
+
+        if($request->hasfile('image4')){
+            $file = $request->file('image4');
+            $filepath = 'storage/images/products/'.date('Y').'/'.date('m').'/';
+            $filename =$filepath.time().'-'.$file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            if(request('old-image4')){
+                $oldpath=request('old-image4');
+                if(File::exists($oldpath)){
+                    unlink($oldpath);
+                }
+            }
+          $data['image4'] = $filename;
+        }
+
+        if($request->hasfile('image5')){
+            $file = $request->file('image5');
+            $filepath = 'storage/images/products/'.date('Y').'/'.date('m').'/';
+            $filename =$filepath.time().'-'.$file->getClientOriginalName();
+            $file->move($filepath, $filename);
+            if(request('old-image5')){
+                $oldpath=request('old-image5');
+                if(File::exists($oldpath)){
+                    unlink($oldpath);
+                }
+            }
+          $data['image5'] = $filename;
+        }
+
 
         $category->update($data);
 
