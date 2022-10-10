@@ -51,7 +51,7 @@ class CategoriesController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filepath = 'admin/images/categories/' . date('Y') . '/' . date('m') . '/';
+            $filepath = 'storage/images/categories/' . date('Y') . '/' . date('m') . '/';
             $filename = $filepath . time() . '-' . $file->getClientOriginalName();
             $file->move($filepath, $filename);
             $data['image'] = $filename;
@@ -122,7 +122,7 @@ class CategoriesController extends Controller
 
         if($request->hasfile('image')){
             $file = $request->file('image');
-            $filepath = 'admin/images/categories/'.date('Y').'/'.date('m').'/';
+            $filepath = 'storage/images/categories/'.date('Y').'/'.date('m').'/';
             $filename =$filepath.time().'-'.$file->getClientOriginalName();
             $file->move($filepath, $filename);
             if(request('old-image')){
