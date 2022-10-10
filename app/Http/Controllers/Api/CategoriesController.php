@@ -16,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('is_special', 0)->get();
         return $this->sendResponse(CategoriesResource::collection($categories), 'success');
     }
 

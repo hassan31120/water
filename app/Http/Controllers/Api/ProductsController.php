@@ -18,7 +18,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::where('is_special', 0)->get();
         return $this->sendResponse(ProductsResource::collection($products), 'success');
     }
 
@@ -26,7 +26,7 @@ class ProductsController extends Controller
     {
         $sub = SubCategory::find($id);
         if ($sub) {
-            $products = Product::where('sub_id', $id)->get();
+            $products = Product::where('sub_id', $id)->where('is_special', 0)->get();
             if (count($products) > 0) {
                 return $this->sendResponse(ProductsResource::collection($products), 'success');
             } else {

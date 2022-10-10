@@ -17,7 +17,7 @@ class SubCategoriesController extends Controller
      */
     public function index()
     {
-        $subCats = SubCategory::all();
+        $subCats = SubCategory::where('is_special', 0)->get();
         return $this->sendResponse(SubCategoriesResource::collection($subCats), 'success');
     }
 
@@ -25,7 +25,7 @@ class SubCategoriesController extends Controller
     {
         $cat = Category::find($id);
         if ($cat) {
-            $sub = SubCategory::where('cat_id', $id)->get();
+            $sub = SubCategory::where('cat_id', $id)->where('is_special', 0)->get();
             if (count($sub) > 0) {
                 return response()->json([
                     'success' => true,
