@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DetailsResource;
+use App\Http\Resources\OrdersResource;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Order;
@@ -43,7 +44,12 @@ class OrdersController extends Controller
                 $order = Order::where('id', Auth::user()->orders[count(Auth::user()->orders) - 1]->id)->first();
                 $order->subTotal = Auth::user()->cart->subTotal;
                 $order->total = Auth::user()->cart->total;
-                $order->grandTotal = Auth::user()->cart->grandTotal;
+                $exp = $order->address->cities->price;
+                if ($exp > 0) {
+                    $order->grandTotal = $exp + $order->total;
+                }else{
+                    $order->grandTotal = null;
+                }
                 $order->save();
                 $cart = Cart::where('user_id', Auth::user()->id)->first();
                 CartItem::where('cart_id', $cart->id)->delete();
@@ -73,11 +79,33 @@ class OrdersController extends Controller
     public function order_details($id)
     {
         $order = Order::find($id);
+        $exp =(double) $order->address->cities->price;
         $details = OrderDetail::where('order_id', $id)->get();
         return response()->json([
+            'success' => true,
+            'total' => $order->total,
+            'shipping_expenses' => $exp,
+            'grand_total' => $order->grandTotal,
             'order' => DetailsResource::collection($details)
         ], 200);
 
+    }
+
+    public function user_orders()
+    {
+        $user = Auth::user();
+        $orders = Order::where('user_id', $user->id)->get();
+        if (count($orders) > 0) {
+            return response()->json([
+                'success' => true,
+                'order' => OrdersResource::collection($orders)
+            ], 200);
+        } else{
+            return response()->json([
+                'success' => false,
+                'message' => 'you don\'t have any orders'
+            ], 200);
+        }
     }
 
     /**

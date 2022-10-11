@@ -58,6 +58,7 @@ Route::middleware('auth:api')->group(function(){
 
     Route::post('confirm_order', [OrdersController::class, 'confirm_order']);
     Route::get('order_details/{id}', [OrdersController::class, 'order_details']);
+    Route::get('user_orders', [OrdersController::class, 'user_orders']);
 
 });
 
@@ -77,3 +78,5 @@ Route::post('searchProducts', [ProductsController::class, 'searchProducts']);
 
 Route::get('special', [ZamzamController::class, 'index']);
 Route::get('masajed', [MasajedController::class, 'index']);
+
+Route::get('cities', [AddressesController::class, 'cities']);

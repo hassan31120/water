@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController as Controller;
 use App\Http\Resources\AddressesResource;
+use App\Http\Resources\CitiesResource;
 use App\Models\Address;
+use App\Models\City;
 use App\Models\User;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
@@ -70,8 +72,9 @@ class AddressesController extends Controller
             'name' => 'required',
             'number' => 'required|numeric',
             'description' => 'required',
-            'governorate' => 'required',
-            'city' => 'required'
+            // 'governorate' => 'required',
+            'city' => 'required',
+            'city_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -81,7 +84,13 @@ class AddressesController extends Controller
         $input = $request->all();
         $input['user_id'] = Auth::user()->id;
 
-       $address = Address::create($input);
+        // $gov = $request->input('governorate');
+        // $city = City::where('name', 'LIKE', "%{$gov}%")->first();
+        // if ($city) {
+        //     $input['city_id'] = $city->id;
+        // }
+
+        $address = Address::create($input);
 
         return response()->json([
             'success' => true,
@@ -163,20 +172,30 @@ class AddressesController extends Controller
     public function destroy($id)
     {
         $address = Address::find($id);
-        if($address){
-        if ($address->user_id == Auth::user()->id) {
-            $address->delete();
-            return response()->json(['message' => 'Address Deleted Successfully!']);
+        if ($address) {
+            if ($address->user_id == Auth::user()->id) {
+                $address->delete();
+                return response()->json(['message' => 'Address Deleted Successfully!']);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'you don\'t have the right to delete this address !!!'
+                ], 200);
+            }
         } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'you don\'t have the right to delete this address !!!'
-            ], 200);
-        }} else{
             return response()->json([
                 'success' => false,
                 'message' => 'There is no such address!'
             ], 200);
         }
+    }
+
+    public function cities()
+    {
+        $cities = City::all();
+        return response()->json([
+            'success' => true,
+            'cities' => CitiesResource::collection($cities),
+        ], 200);
     }
 }

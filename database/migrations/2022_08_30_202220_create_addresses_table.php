@@ -19,6 +19,13 @@ return new class extends Migration
             $table->text('description');
             $table->string('name');
             $table->string('number');
+            $table->string('governorate')->nullable();
+            $table->string('city');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->double('lat')->nullable();
+            $table->double('long')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')
                 ->onUpdate('cascade');

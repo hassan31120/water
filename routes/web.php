@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AddressesController;
 use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\MasajedController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\OrdersController;
@@ -62,6 +63,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     Route::get('/news/edit/{id}', [NewsController::class, 'edit'])->name('admin.news.edit');
     Route::post('/news/update/{id}', [NewsController::class, 'update'])->name('admin.news.update');
     Route::get('/news/destroy/{id}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
+
+    // Cities
+    Route::get('/cities', [CityController::class, 'index'])->name('admin.cities');
+    Route::get('/city/create', [CityController::class, 'create'])->name('admin.city.create');
+    Route::post('/city/store', [CityController::class, 'store'])->name('admin.city.store');
+    Route::get('/city/edit/{id}', [CityController::class, 'edit'])->name('admin.city.edit');
+    Route::post('/city/update/{id}', [CityController::class, 'update'])->name('admin.city.update');
+    Route::get('/city/destroy/{id}', [CityController::class, 'destroy'])->name('admin.city.destroy');
 
 
     // Banners

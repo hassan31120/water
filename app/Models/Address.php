@@ -17,6 +17,7 @@ class Address extends Model
         'number',
         'governorate',
         'city',
+        'city_id',
         'lat',
         'long'
     ];
@@ -27,5 +28,9 @@ class Address extends Model
 
     public function orders(){
         return $this->hasMany(Order::class, 'address_id');
+    }
+
+    public function cities(){
+        return $this->belongsTo(City::class, 'city_id');
     }
 }
