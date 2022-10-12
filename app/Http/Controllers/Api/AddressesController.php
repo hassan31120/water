@@ -74,7 +74,7 @@ class AddressesController extends Controller
             'description' => 'required',
             // 'governorate' => 'required',
             'city' => 'required',
-            'city_id' => 'required'
+            'gov_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -83,6 +83,7 @@ class AddressesController extends Controller
 
         $input = $request->all();
         $input['user_id'] = Auth::user()->id;
+        $input['city_id'] = $request->input('gov_id');
 
         // $gov = $request->input('governorate');
         // $city = City::where('name', 'LIKE', "%{$gov}%")->first();

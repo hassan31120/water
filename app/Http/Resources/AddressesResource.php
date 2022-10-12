@@ -26,7 +26,7 @@ class AddressesResource extends JsonResource
             'city' => $this->city,
             'lat' =>(double) $this->lat,
             'long' =>(double) $this->long,
-            'shipping_price' => $this->cities->price
+            'shipping_price' =>(double) $this->cities->price
         ];
     }
 }
