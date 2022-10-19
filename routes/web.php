@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\ZamzamController;
@@ -141,4 +142,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
     //Notifications
     Route::get('/noti', [NotificationController::class, 'noti'])->name('admin.noti');
     Route::post('/push', [NotificationController::class, 'push'])->name('admin.push');
+
+    // Settings
+    // Route::get('/settings', [SettingsController::class, 'index'])->name('admin.settings');
+    Route::get('/setting/edit/{id}', [SettingsController::class, 'edit'])->name('admin.setting.edit');
+    Route::post('/setting/update/{id}', [SettingsController::class, 'update'])->name('admin.setting.update');
 });

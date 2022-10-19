@@ -123,11 +123,21 @@
                         <span class="nav-link-text me-1">عروض المساجد</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::path() == 'admin/setting/edit/1' ? 'active' : '' }}"
+                        href="{{ route('admin.setting.edit', 1) }}">
+                        <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons-round opacity-10">format_textdirection_r_to_l</i>
+                        </div>
+                        <span class="nav-link-text me-1">الإعدادات</span>
+                    </a>
+                </li>
+                
             </ul>
-            <div class="sidenav-footer position-absolute w-100 bottom-0 ">
+            <div class="sidenav-footer position-absolute w-100">
                 <div class="mx-3">
                   <a class="btn bg-gradient-primary mt-4 w-100" href="{{ route('logout') }}" type="button"><i class="fas fa-sign-out-alt"></i> تسحيل الخروج</a>
                 </div>
-              </div>
+            </div>
         </div>
     </aside>
