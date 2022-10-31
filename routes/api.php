@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\MasajedController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\OrdersController;
 use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\SettingsController;
 use App\Http\Controllers\Api\SubCategoriesController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ZamzamController;
@@ -80,3 +81,5 @@ Route::get('special', [ZamzamController::class, 'index']);
 Route::get('masajed', [MasajedController::class, 'index']);
 
 Route::get('cities', [AddressesController::class, 'cities']);
+
+Route::get('settings', [SettingsController::class, 'index']);

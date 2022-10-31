@@ -14,6 +14,13 @@ class SettingsResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
+
+        return [
+            'about' => $this->about,
+            'contact' => $this->contact,
+            'terms' => $this->terms,
+            'privacy' => $this->privacy,
+        ];
     }
 }

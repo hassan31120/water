@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SettingsResource;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -14,7 +16,11 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        //
+        $setting = Setting::find(1);
+        return response()->json([
+            'success' => true,
+            'settings' => new SettingsResource($setting)
+        ], 200);
     }
 
     /**
