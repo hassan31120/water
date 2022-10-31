@@ -25,11 +25,11 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // return $this->sendError('please Validate error', $validator->errors());
-            return response()->json([
-                'success' => false,
-                'error' => "The email has already been taken."
-            ], 200);
+             return $this->sendError('please Validate error', $validator->errors());
+            // return response()->json([
+            //     'success' => false,
+            //     'error' => "The email has already been taken."
+            // ], 200);
         }
 
         $input = $request->all();
