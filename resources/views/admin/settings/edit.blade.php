@@ -44,7 +44,7 @@
                                                                 <div class="form-outline">
                                                                     <label class="form-label" for="summernote1"
                                                                         style="font-size: 18px">تواصل معنا</label>
-                                                                    <textarea name="contact" id="summernote2" cols="30" rows="5" required
+                                                                    <textarea name="contact" id="summernote1" cols="30" rows="5" required
                                                                         class="form-control form-control-lg formborderCSS">{{ $setting->contact }}</textarea>
                                                                 </div>
                                                             </div>
