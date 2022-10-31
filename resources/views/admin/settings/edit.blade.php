@@ -31,9 +31,9 @@
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label" for="about"
+                                                                    <label class="form-label" for="summernote"
                                                                         style="font-size: 18px">من نحن</label>
-                                                                    <textarea name="about" id="about" cols="30" rows="5" required
+                                                                    <textarea name="about" id="summernote" cols="30" rows="5" required
                                                                         class="form-control form-control-lg formborderCSS">{{ $setting->about }}</textarea>
                                                                 </div>
                                                             </div>
@@ -42,11 +42,10 @@
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label" for="contact"
+                                                                    <label class="form-label" for="summernote1"
                                                                         style="font-size: 18px">تواصل معنا</label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-lg formborderCSS"name="contact"
-                                                                        id="contact" value="{{ $setting->contact }}">
+                                                                    <textarea name="contact" id="summernote2" cols="30" rows="5" required
+                                                                        class="form-control form-control-lg formborderCSS">{{ $setting->contact }}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -54,9 +53,9 @@
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label" for="terms"
+                                                                    <label class="form-label" for="summernote2"
                                                                         style="font-size: 18px"> الشروط </label>
-                                                                    <textarea name="terms" id="terms" cols="30" rows="5" required
+                                                                    <textarea name="terms" id="summernote2" cols="30" rows="5" required
                                                                         class="form-control form-control-lg formborderCSS">{{ $setting->terms }}</textarea>
                                                                 </div>
                                                             </div>
@@ -65,9 +64,9 @@
                                                         <div class="row">
                                                             <div class="col-md-12 mb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label" for="privacy"
+                                                                    <label class="form-label" for="summernote3"
                                                                         style="font-size: 18px">سياسة الخصوصية</label>
-                                                                    <textarea name="privacy" id="privacy" cols="30" rows="5" required
+                                                                    <textarea name="privacy" id="summernote3" cols="30" rows="5" required
                                                                         class="form-control form-control-lg formborderCSS">{{ $setting->privacy }}</textarea>
                                                                 </div>
                                                             </div>
