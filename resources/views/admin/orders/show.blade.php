@@ -30,10 +30,10 @@
                                         <th
                                             class="text-center text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                             الصورة</th>
+                                        {{-- <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                            القديم</th> --}}
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
-                                            السعر القديم</th>
-                                        <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
-                                            السعر الجديد</th>
+                                            السعر</th>
                                         <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                             الكمية</th>
 
@@ -56,11 +56,10 @@
                                                 </div>
                                             </td>
 
-                                            <td class="align-middle text-center">
-
+                                            {{-- <td class="align-middle text-center">
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $detail->old_price }}</span>
-                                            </td>
+                                            </td> --}}
 
                                             <td>
                                                 <p class="text-xs font-weight-bold mb-0 text-center">

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('total')->nullable();
             $table->float('grandTotal')->nullable();
             $table->string('status')->default('Pending');
+            $table->string('pay_status');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')
                 ->onUpdate('cascade');

@@ -15,7 +15,9 @@ class Order extends Model
         'total',
         'grandTotal',
         'cart_id',
-        'address_id'
+        'address_id',
+        'pay_status',
+        'status'
     ];
 
     public function users(){

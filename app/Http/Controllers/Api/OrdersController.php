@@ -18,6 +18,7 @@ class OrdersController extends Controller
     {
         $request->validate([
             'address_id' => 'required',
+            'pay_status' => 'required'
         ]);
         $data = $request->all();
         $addresses = Auth::user()->addresses;

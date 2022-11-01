@@ -19,6 +19,7 @@ class OrdersResource extends JsonResource
         return [
             'total' => (double) $this->total,
             'status' => $this->status,
+            'pay_status' => $this->pay_status,
             'grandTotal' => (double) $this->grandTotal,
             'created_at' => $this->created_at,
             'products' => DetailsResource::collection($this->orderDetails)

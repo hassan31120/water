@@ -77,7 +77,7 @@
 
                                             <td>
                                                 <p class="text-xs font-weight-bold mb-0 text-center">
-                                                    {{ $order->total }}
+                                                    {{ $order->grandTotal }}
                                                 </p>
                                             </td>
 
