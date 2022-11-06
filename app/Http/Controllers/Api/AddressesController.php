@@ -139,7 +139,6 @@ class AddressesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $address = Address::find($id);
 
         $validator = Validator::make($request->all(), [
@@ -148,20 +147,30 @@ class AddressesController extends Controller
             'number' => 'required|numeric',
             'description' => 'required',
             'governorate' => 'required',
-            'city' => 'required'
+            'city' => 'required',
+            'gov_id' => 'required'
         ]);
 
         if ($validator->fails()) {
             return $this->sendError('please Validate error', $validator->errors());
         }
 
-        if ($address->user_id == Auth::user()->id) {
-            $input = $request->all();
-            $address->update($input);
-            return response()->json(['message' => 'Address updated Successfully!']);
+        if ($address) {
+            if ($address->user_id == Auth::user()->id) {
+                $input = $request->all();
+                $input['city_id'] = $request->input('gov_id');
+                $address->update($input);
+                return response()->json(['message' => 'Address updated Successfully!']);
+            } else {
+                return $this->sendError('you don\'t have the right to edit this address !!!');
+            }
         } else {
-            return $this->sendError('you don\'t have the right to edit this address !!!');
+            return response()->json([
+                'suucess' => false,
+                'message' => 'there is no address!'
+            ], 200);
         }
+
     }
 
     /**
