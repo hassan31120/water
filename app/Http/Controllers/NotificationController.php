@@ -23,11 +23,11 @@ class NotificationController extends Controller
 
         $noti = $request->all();
 
-        if ($request['gender'] == 1) {
+        if ($noti['gender'] == 1) {
             $users = User::all();
-        } elseif($request['gender'] == 2) {
+        } elseif($noti['gender'] == 2) {
             $users = User::where('gender', 'male')->get();
-        } elseif($request['gender'] == 3) {
+        } elseif($noti['gender'] == 3) {
             $users = User::where('gender', 'female')->get();
         } else {
             $users = User::all();
