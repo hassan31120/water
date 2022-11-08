@@ -18,9 +18,20 @@ class NotificationController extends Controller
         $request->validate([
             'title' => 'required',
             'body' => 'required',
+            'gender' => 'required'
         ]);
 
         $noti = $request->all();
+
+        if ($request['gender'] == 1) {
+            $users = User::all();
+        } elseif($request['gender'] == 2) {
+            $users = User::where('gender', 'male')->get();
+        } elseif($request['gender'] == 3) {
+            $users = User::where('gender', 'female')->get();
+        } else {
+            $users = User::all();
+        }
 
         $users = User::all();
 
@@ -36,7 +47,7 @@ class NotificationController extends Controller
             }
         }
 
-        $SERVER_API_KEY = 'AAAAuZcnJWg:APA91bFvOGDK9Ap2yOSEYsQP9R-aIpFUhkFx7j7T_yjlOENQKnMG4JPPOumjHr3XjXcqaD5Zlk4rhzjJEEzDuBq_4irgQMCF39SfeNtAMIdLtlBF5JMQWGShLiYdjM9btt69PK9bJA7j';
+        $SERVER_API_KEY = 'AAAA57zOeQM:APA91bHiMkyhWVsq6VPQ68k6j5mzut4a5wrlmTuP-vtgb00Xctokj1cSmBQz7ce0IRetqhUeXqu4hvkG-SX8U9Hl8rr9KvEtO-oteZwK1FB8j5r9X6LA6v1wf8Qwcpwr0ibPExaR9CPg';
 
         $token = [];
         foreach ($users as $user) {
@@ -44,6 +55,11 @@ class NotificationController extends Controller
             array_push($token, $user->push_token);
         }
 
+        if (isset($noti['noti_image'])) {
+            $noti['noti_image'] = $noti['noti_image'];
+        } else {
+            $noti['noti_image'] = "";
+        }
 
         $data = [
 

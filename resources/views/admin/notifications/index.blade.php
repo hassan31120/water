@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('dash')
-الإشعارات
+    الإشعارات
 @endsection
 
 @section('content')
@@ -26,7 +26,8 @@
                                             <div class="card shadow-2-strong card-registration"
                                                 style="border-radius: 15px;">
                                                 <div class="card-body p-4 p-md-5">
-                                                    <form action="{{ route('admin.push') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('admin.push') }}" method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
 
                                                         <div class="row">
@@ -49,6 +50,20 @@
                                                                     <input type="text" name="body" id="body"
                                                                         class="form-control form-control-lg formborderCSS"
                                                                         required />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12 mb-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label" for="body"
+                                                                        style="font-size: 18px">اختيار مستخدم</label>
+                                                                        <select class="form-control form-control-lg formborderCSS" aria-label="Default select example" name="gender">
+                                                                            <option value="1">الكل</option>
+                                                                            <option value="2">الذكور</option>
+                                                                            <option value="3">الاناث</option>
+                                                                          </select>
                                                                 </div>
                                                             </div>
                                                         </div>
