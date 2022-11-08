@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class UserResource extends JsonResource
 {
@@ -21,6 +22,9 @@ class UserResource extends JsonResource
             "name" => (string) $this->name,
             "email" => (string) $this->email,
             "number" => (string) $this->number,
+            "dateOfBirth" => (string) $this->age,
+            "age" => Carbon::parse($this->age)->age,
+            "gender" => (string) $this->gender,
             "token" =>  $this->createToken('mohammedhassanwater')->accessToken,
         ];
     }

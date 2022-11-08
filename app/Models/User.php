@@ -23,7 +23,9 @@ class User extends Authenticatable
         'password',
         'number',
         'userType',
-        'push_token'
+        'push_token',
+        'age',
+        'gender'
     ];
 
     /**
