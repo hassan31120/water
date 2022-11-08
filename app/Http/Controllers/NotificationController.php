@@ -33,8 +33,6 @@ class NotificationController extends Controller
             $users = User::all();
         }
 
-        $users = User::all();
-
         if ($request->hasFile('noti_image')) {
             $file = $request->file('noti_image');
             $filepath = 'storage/images/noti/' . date('Y') . '/' . date('m') . '/';
