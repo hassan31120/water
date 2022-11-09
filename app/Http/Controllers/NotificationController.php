@@ -23,12 +23,25 @@ class NotificationController extends Controller
 
         $noti = $request->all();
 
+        if (isset($noti['from'], $noti['to'])) {
+            $from = $noti['from'];
+            $to = $noti['to'];
+        }
+
         if ($noti['gender'] == 1) {
             $users = User::all();
-        } elseif($noti['gender'] == 2) {
-            $users = User::where('gender', 'male')->get();
-        } elseif($noti['gender'] == 3) {
-            $users = User::where('gender', 'female')->get();
+        } elseif ($noti['gender'] == 2) {
+            if (isset($from, $to)) {
+                $users = User::where('gender', 'male')->whereBetween('real_age', [$from, $to])->get();
+            } else {
+                $users = User::where('gender', 'male')->get();
+            }
+        } elseif ($noti['gender'] == 3) {
+            if (isset($from, $to)) {
+                $users = User::where('gender', 'female')->whereBetween('real_age', [$from, $to])->get();
+            } else {
+                $users = User::where('gender', 'female')->get();
+            }
         } else {
             $users = User::all();
         }
@@ -39,7 +52,7 @@ class NotificationController extends Controller
             $filename = $filepath . time() . '-' . $file->getClientOriginalName();
             $file->move($filepath, $filename);
             $noti['noti_image'] = $filename;
-            foreach($users as $user){
+            foreach ($users as $user) {
                 $user->noti_image = $filename;
                 $user->save();
             }
@@ -62,7 +75,7 @@ class NotificationController extends Controller
         $data = [
 
             "registration_ids" =>
-                $token,
+            $token,
 
             "notification" => [
 

@@ -25,7 +25,8 @@ class User extends Authenticatable
         'userType',
         'push_token',
         'age',
-        'gender'
+        'gender',
+        'real_age'
     ];
 
     /**

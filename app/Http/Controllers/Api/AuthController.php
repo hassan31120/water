@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BaseController as Controller;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,7 @@ class AuthController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $input['push_token'] = $request['push_token'];
+        $input['real_age'] = Carbon::parse($input['age'])->age;
         $user = User::create($input);
         $success['token'] = $user->createToken('mohammedhassanwater')->accessToken;
         $success['name'] = $user->name;

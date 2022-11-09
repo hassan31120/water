@@ -1,4 +1,3 @@
-
 <script src="{{ asset('admin/js/core/popper.min.js') }}"></script>
 <script src="{{ asset('admin/js/core/bootstrap.min.js') }}"></script>
 <script src="{{ asset('admin/js/plugins/perfect-scrollbar.min.js') }}"></script>
@@ -265,27 +264,40 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-    <script type="text/javascript">
-        $('#summernote').summernote({
-            height: 200
-        });
-        $('#summernote1').summernote({
-            height: 200
-        });
-        $('#summernote2').summernote({
-            height: 200
-        });
-        $('#summernote3').summernote({
-            height: 200
-        });
-    </script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script type="text/javascript">
+    $('#summernote').summernote({
+        height: 200
+    });
+    $('#summernote1').summernote({
+        height: 200
+    });
+    $('#summernote2').summernote({
+        height: 200
+    });
+    $('#summernote3').summernote({
+        height: 200
+    });
+</script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+
+{{-- for the age tags in sending notifications --}}
+<script>
+    $('#combo').change(function() {
+        $('#myOptionsDiv').html('');
+        var num = $(this).val();
+        if (num == 2 || num == 3) {
+            $('#myOptionsDiv').append('<label for="" class="form-label" style="font-size: 18px">الفئة المستهدفة</label><div class="row"><div class="col-6"><input type="number" name="from" placeholder="من" id="body" class="form-control form-control-lg formborderCSS"/></div><div class="col-6"><input type="number" name="to" placeholder="الى" id="body" class="form-control form-control-lg formborderCSS"/></div></div>');
+        }
+    });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </body>
 
 </html>

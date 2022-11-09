@@ -59,11 +59,15 @@
                                                                 <div class="form-outline">
                                                                     <label class="form-label" for="body"
                                                                         style="font-size: 18px">اختيار مستخدم</label>
-                                                                        <select class="form-control form-control-lg formborderCSS" aria-label="Default select example" name="gender">
-                                                                            <option value="1">الكل</option>
-                                                                            <option value="2">الذكور</option>
-                                                                            <option value="3">الاناث</option>
-                                                                          </select>
+                                                                    <select
+                                                                        class="form-control form-control-lg formborderCSS"
+                                                                        aria-label="Default select example" name="gender"
+                                                                        id='combo'>
+                                                                        <option value="1">الكل</option>
+                                                                        <option value="2">الذكور</option>
+                                                                        <option value="3">الاناث</option>
+                                                                    </select>
+                                                                    <div id="myOptionsDiv" class="mt-4"> </div>
                                                                 </div>
                                                             </div>
                                                         </div>
